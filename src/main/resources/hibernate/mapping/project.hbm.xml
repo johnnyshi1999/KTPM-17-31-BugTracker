@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Database.Hibernate/Database.Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="Entities.Project" table="project" schema="bugtracker_db">
+        <id name="id">
+            <column name="id" sql-type="int unsigned"/>
+            <generator class="identity"></generator>
+        </id>
+
+        <property name="name" type="java.lang.String">
+            <column name="name" sql-type="varchar(100)" length="15" not-null="true"/>
+        </property>
+
+        <property name="description" type="java.lang.String">
+            <column name="description" sql-type="longtext" not-null="true"/>
+        </property>
+
+        <property name="dateCreated">
+            <column name="date_created" sql-type="datetime" not-null="true"/>
+        </property>
+
+        <many-to-one class="Entities.User" name="manager"
+                     fetch="select" lazy="false">
+            <column name="manager" sql-type="int unsigned" not-null="true"/>
+        </many-to-one>
+
+        <list inverse="true" name="team" fetch="select" lazy="false" cascade="all-delete-orphan">
+            <key>
+                <column name="project_id" sql-type="int unsigned" not-null="true"/>
+            </key>
+            <list-index column="user_id" base="0"/>
+            <one-to-many class="Entities.ProjectTeam"/>
+        </list>
+
+        <list inverse="true" name="issues" fetch="select" lazy="false" cascade="all-delete-orphan">
+            <key>
+                <column name="project_id" sql-type="int unsigned" not-null="true"/>
+            </key>
+            <list-index column="id" base="0"/>
+            <one-to-many class="Entities.Issue"/>
+        </list>
+    </class>
+</hibernate-mapping>

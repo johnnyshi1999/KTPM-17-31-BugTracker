@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Database.Hibernate/Database.Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="Entities.Label" table="label" schema="bugtracker_db">
+        <composite-id>
+            <key-property name="id">
+                <column name="id" sql-type="int unsigned"/>
+            </key-property>
+
+            <key-many-to-one class="Entities.Project" name="project">
+                <column name="project_id" sql-type="int unsigned"/>
+            </key-many-to-one>
+        </composite-id>
+
+        <property name="labelName" type="java.lang.String">
+            <column name="label_name" sql-type="char(10)" length="10"/>
+        </property>
+    </class>
+</hibernate-mapping>

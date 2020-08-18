@@ -1,0 +1,13 @@
+.text-field {
+    -fx-background-color: #555A61;
+    -fx-text-fill: #E7E7E7;
+}
+
+.text-area .content {
+    -fx-background-color: #555A61;
+
+}
+
+.text-area {
+    -fx-text-fill: #E7E7E7;
+}

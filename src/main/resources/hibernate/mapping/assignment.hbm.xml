@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Database.Hibernate/Database.Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="Entities.Assignment" table="assignment" schema="bugtracker_db">
+        <composite-id>
+            <key-many-to-one class="Entities.Issue" name="issue">
+                <column name="issue_id" sql-type="char(37)" length="37"/>
+            </key-many-to-one>
+
+            <key-many-to-one class="Entities.User" name="dev">
+                <column name="dev_id" sql-type="int unsigned"/>
+            </key-many-to-one>
+        </composite-id>
+
+        <many-to-one class="Entities.User" name="creator"
+                     fetch="select" lazy="false">
+            <column name="creator" sql-type="int unsigned" not-null="true"/>
+        </many-to-one>
+
+        <property name="deadline" type="java.util.Date">
+            <column name="deadline" sql-type="datetime" not-null="true"/>
+        </property>
+        <property name="note" type="java.lang.String">
+            <column name="note" sql-type="text" not-null="true"/>
+        </property>
+
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Database.Hibernate/Database.Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="Entities.ProjectTeam" table="project_team" schema="bugtracker_db">
+        <composite-id>
+            <key-many-to-one class="Entities.Project" name="project">
+                <column name="project_id" sql-type="int unsigned"/>
+            </key-many-to-one>
+
+            <key-many-to-one class="Entities.User" name="user">
+                <column name="user_id" sql-type="int unsigned"/>
+            </key-many-to-one>
+        </composite-id>
+
+        <property name="dateJoined">
+            <column name="date_join" sql-type="datetime" not-null="true"/>
+        </property>
+
+        <property name="assignRight" type="boolean">
+            <column name="assign_right" sql-type="tinyint(1)" not-null="true"/>
+        </property>
+
+        <property name="inviteRight" type="boolean">
+            <column name="invite_right" sql-type="tinyint(1)" not-null="true"/>
+        </property>
+
+    </class>
+</hibernate-mapping>
