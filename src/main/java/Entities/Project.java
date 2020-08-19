@@ -1,5 +1,6 @@
 package Entities;
 
+import Business.Notifier;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,8 +15,8 @@ public class Project implements Serializable {
     private StringProperty description = new SimpleStringProperty();
     private Date dateCreated;
     private User manager;
-    private List<ProjectTeam> team = new ArrayList<>();
-    private List<Issue> issues = new ArrayList<Issue>();
+    private Set<ProjectTeam> team = new HashSet<>();
+    private Set<Issue> issues = new HashSet<>();
 
     public int getId() {
         return id;
@@ -65,19 +66,31 @@ public class Project implements Serializable {
         return description;
     }
 
-    public List<ProjectTeam> getTeam() {
+    public Set<ProjectTeam> getTeam() {
         return team;
     }
 
-    public void setTeam(List<ProjectTeam> team) {
+    public void setTeam(Set<ProjectTeam> team) {
         this.team = team;
     }
 
-    public List<Issue> getIssues() {
+    public Set<Issue> getIssues() {
         return issues;
     }
 
-    public void setIssues(List<Issue> issues) {
+    public void setIssues(Set<Issue> issues) {
         this.issues = issues;
+    }
+
+    private List<Notifier<Project>> notifiers = new ArrayList<>();
+
+    public List<Notifier<Project>> getNotifiers() {
+        return notifiers;
+    }
+
+    public void fireNotifiers() {
+        for (int i = 0; i < notifiers.size(); i++) {
+            notifiers.get(i).notifyChange(this);
+        }
     }
 }

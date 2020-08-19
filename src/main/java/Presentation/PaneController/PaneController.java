@@ -4,10 +4,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PaneController implements Initializable {
+public abstract class PaneController implements Initializable {
     public Pane parent;
     public FXMLLoader loader;
 
@@ -16,8 +17,14 @@ public class PaneController implements Initializable {
         loader = new FXMLLoader(getClass().getResource(fxmlFile));
         loader.setController(this);
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    public void load() {
+        try {
+            Pane pane = loader.load();
+            parent.getChildren().clear();
+            parent.getChildren().add(pane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

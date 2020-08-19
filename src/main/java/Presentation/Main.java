@@ -3,6 +3,7 @@ package Presentation;
 import DAO.UserDAO;
 import Entities.Assignment;
 import Entities.User;
+import Presentation.HomeWindow.MainController;
 import hibernate.HibernateUtils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +19,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/MainWindow/main.fxml"));
         primaryStage.setTitle("BugTracker");
         MainController mainController = new MainController();
         loader.setController(mainController);
+
         Parent root = loader.load();
+
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.setResizable(false);
         primaryStage.show();

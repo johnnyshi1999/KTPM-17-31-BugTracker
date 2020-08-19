@@ -5,15 +5,22 @@
 <hibernate-mapping>
 
     <class name="Entities.Assignment" table="assignment" schema="bugtracker_db">
-        <composite-id>
-            <key-many-to-one class="Entities.Issue" name="issue">
-                <column name="issue_id" sql-type="char(37)" length="37"/>
-            </key-many-to-one>
+<!--        <composite-id>-->
+<!--            <key-many-to-one class="Entities.Issue" name="issue">-->
+<!--                <column name="issue_id" sql-type="char(37)" length="37"/>-->
+<!--            </key-many-to-one>-->
+<!--        </composite-id>-->
 
-            <key-many-to-one class="Entities.User" name="dev">
-                <column name="dev_id" sql-type="int unsigned"/>
-            </key-many-to-one>
-        </composite-id>
+        <id name="issue" column="issue_id">
+            <generator class="foreign">
+                <param name="property">issue</param>
+            </generator>
+        </id>
+
+        <many-to-one class="Entities.User" name="dev"
+                     fetch="select" lazy="false">
+            <column name="dev_id" sql-type="int unsigned" not-null="true"/>
+        </many-to-one>
 
         <many-to-one class="Entities.User" name="creator"
                      fetch="select" lazy="false">

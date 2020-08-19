@@ -20,7 +20,7 @@ public class User implements Serializable {
     private String password;
     private StringProperty email = new SimpleStringProperty();
     private int user_type;
-    List<ProjectTeam> projects = new ArrayList<>();
+    Set<ProjectTeam> projects = new HashSet<>();
 
     public int getId() {
         return id;
@@ -66,11 +66,11 @@ public class User implements Serializable {
         return email;
     }
 
-    public List<ProjectTeam> getProjects() {
+    public Set<ProjectTeam> getProjects() {
         return projects;
     }
 
-    public void setProjects(List<ProjectTeam> projects) {
+    public void setProjects(Set<ProjectTeam> projects) {
         this.projects = projects;
     }
 }

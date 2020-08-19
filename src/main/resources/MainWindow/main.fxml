@@ -64,7 +64,7 @@
                               <Insets right="15.0" />
                            </HBox.margin>
                         </Text>
-                        <MenuButton fx:id="userMenuButton" mnemonicParsing="false" style="-fx-background-color: null;" stylesheets="@css/profileicon.css">
+                        <MenuButton fx:id="userMenuButton" mnemonicParsing="false" style="-fx-background-color: null;" stylesheets="@../css/profileicon.css">
                           <items>
                             <MenuItem fx:id="logoutMenuItem" mnemonicParsing="false" text="Log out" />
                           </items>
@@ -86,10 +86,10 @@
           <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane fx:id="homeParentPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+            <AnchorPane fx:id="PaneParent" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="233.0" style="-fx-background-color: #555A61;">
                <children>
-                  <JFXButton fx:id="homeButton" buttonType="RAISED" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="233.0" ripplerFill="#788fe2" stylesheets="@css/sidepane-cell.css" text="Home" VBox.vgrow="NEVER">
+                  <JFXButton fx:id="homeButton" buttonType="RAISED" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="233.0" ripplerFill="#788fe2" stylesheets="@../css/sidepane-cell.css" text="Home" VBox.vgrow="NEVER">
                      <font>
                         <Font name="Consolas Bold" size="18.0" />
                      </font>

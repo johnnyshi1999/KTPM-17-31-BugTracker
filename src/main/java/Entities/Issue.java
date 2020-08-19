@@ -14,10 +14,8 @@ public class Issue implements Serializable {
     private Date dateCreated;
     private IntegerProperty status = new SimpleIntegerProperty();
     private ObjectProperty<Label> label = new SimpleObjectProperty<Label>();
+    private ObjectProperty<Assignment> assignment = new SimpleObjectProperty<Assignment>();
 
-    public Issue(Project project) {
-        this.project = project;
-    }
 
     public String getId() {
         return id;
@@ -83,6 +81,14 @@ public class Issue implements Serializable {
         this.label.set(label);
     }
 
+    public Assignment getAssignment() {
+        return assignment.get();
+    }
+
+    public void setAssignment(Assignment assignment) {
+        this.assignment.set(assignment);
+    }
+
     public StringProperty titleProperty() {
         return title;
     }
@@ -97,5 +103,9 @@ public class Issue implements Serializable {
 
     public ObjectProperty<Label> labelProperty() {
         return label;
+    }
+
+    public ObjectProperty<Assignment> assignmentProperty() {
+        return assignment;
     }
 }

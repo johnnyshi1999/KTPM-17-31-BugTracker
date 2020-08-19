@@ -27,20 +27,18 @@
             <column name="manager" sql-type="int unsigned" not-null="true"/>
         </many-to-one>
 
-        <list inverse="true" name="team" fetch="select" lazy="false" cascade="all-delete-orphan">
+        <set inverse="true" name="team" fetch="select" lazy="false" cascade="all delete-orphan">
             <key>
                 <column name="project_id" sql-type="int unsigned" not-null="true"/>
             </key>
-            <list-index column="user_id" base="0"/>
             <one-to-many class="Entities.ProjectTeam"/>
-        </list>
+        </set>
 
-        <list inverse="true" name="issues" fetch="select" lazy="false" cascade="all-delete-orphan">
+        <set inverse="true" name="issues" fetch="select" lazy="false" cascade="all-delete-orphan">
             <key>
                 <column name="project_id" sql-type="int unsigned" not-null="true"/>
             </key>
-            <list-index column="id" base="0"/>
             <one-to-many class="Entities.Issue"/>
-        </list>
+        </set>
     </class>
 </hibernate-mapping>

@@ -10,7 +10,7 @@
         </id>
 
         <many-to-one class="Entities.Project" name="project"
-                     fetch="select" lazy="false" insert="false" update="false">
+                     fetch="select" lazy="false">
             <column name="project_id" sql-type="int unsigned" not-null="true"/>
         </many-to-one>
 
@@ -36,9 +36,10 @@
         <many-to-one class="Entities.Label" name="label"
                      fetch="select" lazy="false">
             <column name="label" sql-type="int unsigned"/>
-            <column name="project_id" sql-type="int unsigned"/>
         </many-to-one>
 
+        <one-to-one name="assignment" cascade="all-delete-orphan" class="Entities.Assignment">
+        </one-to-one>
 
     </class>
 </hibernate-mapping>

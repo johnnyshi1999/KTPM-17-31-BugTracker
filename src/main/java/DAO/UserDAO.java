@@ -17,6 +17,8 @@ public class UserDAO implements DAOInterface<User>{
                     .setParameter("username", username)
                     .setParameter("password", password);
             user = (User) query.getSingleResult();
+
+
             session.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -25,6 +27,7 @@ public class UserDAO implements DAOInterface<User>{
         return user;
     }
 
+
     @Override
     public void save(User user) {
 
@@ -32,7 +35,16 @@ public class UserDAO implements DAOInterface<User>{
 
     @Override
     public void update(User user) {
-
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            session.update(user);
+            session.flush();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
     }
 
     @Override

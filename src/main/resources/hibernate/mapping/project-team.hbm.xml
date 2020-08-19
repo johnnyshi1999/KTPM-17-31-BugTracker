@@ -6,11 +6,11 @@
 
     <class name="Entities.ProjectTeam" table="project_team" schema="bugtracker_db">
         <composite-id>
-            <key-many-to-one class="Entities.Project" name="project">
+            <key-many-to-one class="Entities.Project" name="project" lazy="false">
                 <column name="project_id" sql-type="int unsigned"/>
             </key-many-to-one>
 
-            <key-many-to-one class="Entities.User" name="user">
+            <key-many-to-one class="Entities.User" name="user" lazy="false">
                 <column name="user_id" sql-type="int unsigned"/>
             </key-many-to-one>
         </composite-id>

@@ -26,12 +26,11 @@
             <column name="user_type" sql-type="int unsigned"/>
         </property>
 
-        <list inverse="true" name="projects" fetch="select" lazy="false" cascade="all-delete-orphan">
+        <set inverse="true" name="projects" fetch="join" lazy="false" cascade="all-delete-orphan">
             <key>
                 <column name="user_id" sql-type="int unsigned" not-null="true"/>
             </key>
-            <list-index column="project_id" base="0"/>
             <one-to-many class="Entities.ProjectTeam"/>
-        </list>
+        </set>
     </class>
 </hibernate-mapping>
