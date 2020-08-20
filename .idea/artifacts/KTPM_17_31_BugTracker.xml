@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="KTPM-17-31-BugTracker">
+    <output-path>$PROJECT_DIR$/out/artifacts/KTPM_17_31_BugTracker</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="Presentation.Main" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="KTPM_17_31_BugTracker.jar">
+        <element id="module-output" name="KTPM-17-31-BugTracker" />
+      </element>
+    </root>
+  </artifact>
+</component>

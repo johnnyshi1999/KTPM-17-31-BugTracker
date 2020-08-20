@@ -1,15 +1,13 @@
 package Entities;
 
-import Business.Notifier;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
+import Business.INotifyChange;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.io.Serializable;
 import java.util.*;
 
-public class Project implements Serializable {
+public class Project extends INotifyChange implements Serializable {
     private int id;
     private StringProperty name = new SimpleStringProperty();
     private StringProperty description = new SimpleStringProperty();
@@ -17,6 +15,7 @@ public class Project implements Serializable {
     private User manager;
     private Set<ProjectTeam> team = new HashSet<>();
     private Set<Issue> issues = new HashSet<>();
+    private Set<Label> labels = new HashSet<>();
 
     public int getId() {
         return id;
@@ -82,15 +81,23 @@ public class Project implements Serializable {
         this.issues = issues;
     }
 
-    private List<Notifier<Project>> notifiers = new ArrayList<>();
-
-    public List<Notifier<Project>> getNotifiers() {
-        return notifiers;
+    public Set<Label> getLabels() {
+        return labels;
     }
 
-    public void fireNotifiers() {
-        for (int i = 0; i < notifiers.size(); i++) {
-            notifiers.get(i).notifyChange(this);
-        }
+    public void setLabels(Set<Label> labels) {
+        this.labels = labels;
     }
+
+    //    private List<Notifier<Project>> notifiers = new ArrayList<>();
+//
+//    public List<Notifier<Project>> getNotifiers() {
+//        return notifiers;
+//    }
+//
+//    public void fireNotifiers() {
+//        for (int i = 0; i < notifiers.size(); i++) {
+//            notifiers.get(i).notifyChange(this);
+//        }
+//    }
 }

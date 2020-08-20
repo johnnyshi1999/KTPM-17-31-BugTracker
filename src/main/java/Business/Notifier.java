@@ -1,5 +1,5 @@
 package Business;
 
-public interface Notifier<T> {
-    public void notifyChange(T t);
+public interface Notifier {
+    public void notifyChange(INotifyChange t);
 }

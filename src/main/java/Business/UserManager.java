@@ -16,6 +16,7 @@ public class UserManager {
 
     private static UserManager manager = null;
     private User loggedInUser = null;
+    private static List<ProjectTeam> projects = null;
 
     public static UserManager getManager() {
         if (manager == null) {
@@ -30,7 +31,6 @@ public class UserManager {
 
     public void setLoggedInUser(String username, String password) {
         loggedInUser = new UserDAO().getLoggedInUser(username, password);
-
     }
 
     public void createProject(ProjectDTO dto) throws Exception {
@@ -55,16 +55,19 @@ public class UserManager {
         loggedInUser.getProjects().add(projectTeam);
 
         new ProjectTeamDAO().save(projectTeam);
-        ProjectManager.bindProjectToDTO(project, dto);
+        ProjectManager.bindDtoToObject(project, dto);
     }
 
     public List<ProjectDTO> getUserProjects() {
         List<ProjectDTO> result = new ArrayList<>();
-        List<ProjectTeam> projects = new ArrayList<ProjectTeam>(loggedInUser.getProjects());
+        if (projects == null) {
+            projects = new ArrayList<ProjectTeam>(loggedInUser.getProjects());
+        }
         for (int i = 0; i < projects.size(); i++) {
             Project project = projects.get(i).getProject();
             ProjectDTO dto = new ProjectDTO();
-            ProjectManager.bindProjectToDTO(project, dto);
+            dto.copyInfo(project);
+            ProjectManager.bindDtoToObject(project, dto);
 //            dto.copyInfo(project);
 //
 //            Notifier<Project> notifier = new Notifier<Project>() {
@@ -78,5 +81,30 @@ public class UserManager {
             result.add(dto);
         }
         return result;
+    }
+
+    public static Project getProjectFromDTO(ProjectDTO dto) {
+        Project project = null;
+        if (projects != null) {
+            for (int i = 0; i < projects.size(); i++) {
+                if (projects.get(i).getProject().getId() == dto.getId()) {
+                    project = projects.get(i).getProject();
+                    return project;
+                }
+            }
+        }
+        return project;
+    }
+
+    public boolean getAssignRightOnProject(Project project) {
+        if (projects != null) {
+            for (int i = 0; i < projects.size(); i++) {
+                if (projects.get(i).getProject().getId() == project.getId()
+                    && projects.get(i).getUser().getId() == loggedInUser.getId()) {
+                    return projects.get(i).isAssignRight();
+                }
+            }
+        }
+        return false;
     }
 }

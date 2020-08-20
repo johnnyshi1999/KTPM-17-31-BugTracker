@@ -25,7 +25,6 @@ public class Main extends Application {
         loader.setController(mainController);
 
         Parent root = loader.load();
-
         primaryStage.setScene(new Scene(root, 1280, 720));
         primaryStage.setResizable(false);
         primaryStage.show();

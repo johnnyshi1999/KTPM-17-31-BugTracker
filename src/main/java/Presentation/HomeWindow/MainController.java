@@ -18,6 +18,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
+    HomeController homeController = null;
     @FXML
     AnchorPane PaneParent;
     @FXML
@@ -41,14 +42,14 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setLoggedInUser(null);
         homeButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 showHomepane();
             }
         });
-
-        setLoggedInUser(null);
+        homeButton.fire();
 
     }
 
@@ -56,11 +57,13 @@ public class MainController implements Initializable {
         //TEST
         UserManager.getManager().setLoggedInUser("user1", "user");
         homeButton.fire();
-        homeButton.requestFocus();
     }
 
     public void showHomepane() {
-        HomeController controller = new HomeController(PaneParent);
-        controller.load();
+        if (homeController == null) {
+            homeController = new HomeController(PaneParent);
+        }
+        homeController.load();
+
     }
 }

@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 public abstract class PaneController implements Initializable {
     public Pane parent;
+    public Pane container = null;
     public FXMLLoader loader;
 
     public PaneController(Pane parent, String fxmlFile) {
@@ -19,12 +20,14 @@ public abstract class PaneController implements Initializable {
     }
 
     public void load() {
-        try {
-            Pane pane = loader.load();
-            parent.getChildren().clear();
-            parent.getChildren().add(pane);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (container == null) {
+            try {
+                container = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+        parent.getChildren().clear();
+        parent.getChildren().add(container);
     }
 }

@@ -10,18 +10,49 @@ public class IssueDTO {
     private String id;
     private StringProperty title = new SimpleStringProperty();
     private StringProperty description = new SimpleStringProperty();
-    private StringProperty label;
-    private StringProperty status;
-//    private StringProperty assignee = new SimpleStringProperty("");
+    private StringProperty label = new SimpleStringProperty("");
+    private StringProperty status = new SimpleStringProperty();
+    private StringProperty assignee = new SimpleStringProperty("");
     private StringProperty dueDate = new SimpleStringProperty("");
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm a");
+
+    public SimpleDateFormat getDateFormat() {
+        return dateFormat;
+    }
 
     public void copyInfo(Issue issue) {
         id = issue.getId();
         setTitle(issue.getTitle());
         setDescription(issue.getDescription());
-//        if (issue.)
+        if (issue.getLabel() != null) {
+            setLabel(issue.getLabel().getLabelName());
+        }
+        else {
+            setLabel("");
+        }
+        switch (issue.getStatus()) {
+            case 0: {
+                setStatus("Open");
+                break;
+            }
+            case 1: {
+                setStatus("Working");
+                break;
+            }
+            case 2: {
+                setStatus("Resolved");
+                break;
+            }
+        }
+        if (issue.getAssignment() != null) {
+            setAssignee(issue.getAssignment().getDev().getUsername());
+            setDueDate(dateFormat.format(issue.getAssignment().getDeadline()));
+        }
+        else {
+            setAssignee("");
+            setDueDate("");
+        }
     }
 
     public String getId() {
@@ -64,13 +95,13 @@ public class IssueDTO {
         this.status.set(status);
     }
 
-//    public String getAssignee() {
-//        return assignee.get();
-//    }
-//
-//    public void setAssignee(String assignee) {
-//        this.assignee.set(assignee);
-//    }
+    public String getAssignee() {
+        return assignee.get();
+    }
+
+    public void setAssignee(String assignee) {
+        this.assignee.set(assignee);
+    }
 
     public String getDueDate() {
         return dueDate.get();
@@ -96,9 +127,9 @@ public class IssueDTO {
         return status;
     }
 
-//    public StringProperty assigneeProperty() {
-//        return assignee;
-//    }
+    public StringProperty assigneeProperty() {
+        return assignee;
+    }
 
     public StringProperty dueDateProperty() {
         return dueDate;

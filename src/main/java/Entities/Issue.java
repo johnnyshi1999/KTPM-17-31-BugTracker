@@ -1,11 +1,12 @@
 package Entities;
 
+import Business.INotifyChange;
 import javafx.beans.property.*;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class Issue implements Serializable {
+public class Issue extends INotifyChange implements Serializable {
     private String id;
     private Project project;
     private StringProperty title = new SimpleStringProperty();
