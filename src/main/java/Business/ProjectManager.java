@@ -1,6 +1,7 @@
 package Business;
 
 import DAO.IssueDAO;
+import DAO.LabelDAO;
 import DTO.IssueDTO;
 import DTO.ProjectDTO;
 import Entities.*;
@@ -54,10 +55,22 @@ public class ProjectManager {
 
         for (Issue issue : currentProject.getIssues()) {
             IssueDTO dto = new IssueDTO();
+            dto.copyInfo(issue);
             IssueManager.bindDtoToObject(issue, dto);
+            issueDTOS.add(dto);
         }
 
         return issueDTOS;
+    }
+
+    public List<String> getProjectLabels() {
+        List<String> labels = new ArrayList<>();
+
+        for (Label label : currentProject.getLabels()) {
+            String labelName = label.getLabelName();
+            labels.add(labelName);
+        }
+        return labels;
     }
 
     public ProjectDTO getDto() {
@@ -120,5 +133,12 @@ public class ProjectManager {
 
     public boolean getAssignRight() {
         return UserManager.getManager().getAssignRightOnProject(currentProject);
+    }
+
+    public void createLabel(String labelStr) {
+        Label label = new Label();
+        label.setLabelName(labelStr);
+        label.setProject(currentProject);
+        new LabelDAO().save(label);
     }
 }

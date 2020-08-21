@@ -7,6 +7,7 @@
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -51,7 +52,7 @@
                               <Font name="Consolas Bold" size="16.0" />
                            </font>
                         </Text>
-                        <JFXComboBox editable="true" layoutX="128.0" layoutY="18.0" prefHeight="26.0" prefWidth="410.0" />
+                        <JFXComboBox fx:id="assigneeComboBox" editable="true" layoutX="128.0" layoutY="18.0" prefHeight="26.0" prefWidth="410.0" />
                         <Text fill="#e7e7e7" layoutX="26.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Due Date:">
                            <font>
                               <Font name="Consolas Bold" size="16.0" />
@@ -82,18 +83,23 @@
                               <Font name="Consolas Bold" size="16.0" />
                            </font>
                         </Text>
-                        <JFXComboBox fx:id="labelComboBox" editable="true" layoutX="27.0" layoutY="78.0" prefHeight="38.0" prefWidth="240.0" style="-fx-border-color: #555A61;" AnchorPane.leftAnchor="26.0" />
+                        <JFXComboBox fx:id="labelComboBox" layoutX="29.0" layoutY="78.0" prefHeight="38.0" prefWidth="270.0" style="-fx-border-color: #e7e7e7;" AnchorPane.leftAnchor="28.0" />
                         <Text fill="#e7e7e7" layoutX="25.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="188.1171875">
                            <font>
                               <Font name="Consolas Bold" size="16.0" />
                            </font>
                         </Text>
-                        <JFXComboBox fx:id="statusComboBox" layoutX="26.0" layoutY="217.0" prefHeight="38.0" prefWidth="240.0" style="-fx-border-color: #555A61;" />
+                        <JFXComboBox fx:id="statusComboBox" layoutX="26.0" layoutY="217.0" prefHeight="38.0" prefWidth="270.0" style="-fx-border-color: #e7e7e7;" />
+                        <Button fx:id="newLabelButton" layoutX="179.0" layoutY="116.0" mnemonicParsing="false" style="-fx-background-color: null;" text="New label..." textFill="#e7e7e7" underline="true">
+                           <font>
+                              <Font name="Consolas Italic" size="15.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                   <JFXButton fx:id="saveButton" layoutX="316.0" layoutY="694.0" prefHeight="50.0" prefWidth="180.0" stylesheets="@../css/button.css" text="Save" />
                   <JFXButton fx:id="cancelButton" cancelButton="true" layoutX="542.0" layoutY="694.0" prefHeight="50.0" prefWidth="180.0" stylesheets="@../css/cancel-button.css" text="Cancel" />
-                  <Text fx:id="errorText" fill="RED" layoutX="476.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER">
+                  <Text fx:id="errorText" fill="RED" layoutX="45.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="975.2000732421875" AnchorPane.topAnchor="12.0">
                      <font>
                         <Font name="Consolas" size="16.0" />
                      </font>

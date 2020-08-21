@@ -1,17 +1,15 @@
 package Presentation.ProjectWindow.Pane;
 
-import Business.ProjectManager;
 import Business.SharedPreference;
 import Business.SharedPreference.IssueStatus;
 import DTO.IssueDTO;
 import Presentation.PaneController.PaneController;
 import Presentation.ProjectWindow.ProjectMainCotroller;
 import com.jfoenix.controls.*;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -26,13 +24,14 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AddIssueController extends PaneController {
     ProjectMainCotroller mediator;
     IssueDTO dto = null;
+    ObservableList<String> labels;
     @FXML
     TextField titleTextField;
     @FXML
@@ -59,12 +58,16 @@ public class AddIssueController extends PaneController {
     @FXML
     JFXButton cancelButton;
     @FXML
+    Button newLabelButton;
+    @FXML
     Text errorText;
     @FXML
     ScrollPane scrollPane;
-    public AddIssueController(Pane parent, ProjectMainCotroller mediator) {
-        super(parent, "/ProjectWindow/issue-input.fxml");
+    public AddIssueController(ProjectMainCotroller mediator) {
+        super(mediator.getParentPane(), "/ProjectWindow/issue-input.fxml");
         this.mediator = mediator;
+        labels = FXCollections.observableArrayList(mediator.manager.getProjectLabels());
+        labels.add(null);
     }
 
     @Override
@@ -72,11 +75,33 @@ public class AddIssueController extends PaneController {
         assignPane.disableProperty().bind(assignToggleButton.selectedProperty().not());
         assignToggleButton.setDisable(mediator.manager.getAssignRight() == false);
 
+        labelComboBox.setItems(labels);
+        labelComboBox.setCellFactory(new Callback<ListView<String>,
+                ListCell<String>>() {
+            @Override
+            public ListCell<String> call(ListView<String> locationListView) {
+                final ListCell<String> listCell = new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String t, boolean bln) {
+                        super.updateItem(t, bln);
+
+                        if(t != null){
+                            setText(t);
+                        }else{
+                            setText("None");
+                        }
+                    }
+
+                };
+                return listCell;
+            }
+        });
+
         statusComboBox.setItems(FXCollections.observableArrayList(IssueStatus.values()));
         statusComboBox.setCellFactory(new Callback<ListView<IssueStatus>,
                 ListCell<IssueStatus>>() {
             @Override
-            public ListCell<IssueStatus> call(ListView<IssueStatus> locationListView) {
+            public ListCell<IssueStatus> call(ListView<IssueStatus> statusListView) {
                 final ListCell<IssueStatus> listCell = new ListCell<IssueStatus>() {
                     @Override
                     protected void updateItem(IssueStatus t, boolean bln) {
@@ -120,6 +145,26 @@ public class AddIssueController extends PaneController {
             }
         });
 
+        newLabelButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                TextInputDialog dialog = new TextInputDialog();
+                dialog.setTitle("New Label");
+                dialog.setHeaderText("Enter new label name");
+                dialog.setContentText("Name:");
+                DialogPane pane = dialog.getDialogPane();
+                pane.getStylesheets().add(
+                        getClass().getResource("/css/dialog.css").toExternalForm());
+
+                Optional<String> result = dialog.showAndWait();
+                if (result.isPresent()){
+                    String label = result.get();
+                    labels.add(label);
+                    mediator.manager.createLabel(label);
+                }
+            }
+        });
+
 
     }
 
@@ -141,7 +186,13 @@ public class AddIssueController extends PaneController {
         dto.setStatus(statusComboBox.getSelectionModel().getSelectedItem());
 
         if (assignToggleButton.isSelected() == true) {
-            dto.setAssignee(assigneeComboBox.getSelectionModel().getSelectedItem());
+            String assignee = assigneeComboBox.getSelectionModel().getSelectedItem();
+            if (assignee != null) {
+                dto.setAssignee(assigneeComboBox.getSelectionModel().getSelectedItem());
+            }
+            else {
+                throw new Exception("Assignment does not have Assignee");
+            }
             dto.setNote(noteTextArea.getText());
             Date date = getDueDate();
             Date now = new Date();

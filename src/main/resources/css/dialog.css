@@ -1,0 +1,27 @@
+.dialog-pane {
+    -fx-background-color:  #26262B;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: #E7E7E7;
+    -fx-font-family: Consolas;
+    -fx-font-size: 16px;
+}
+
+.dialog-pane:header .header-panel {
+    -fx-background-color:  #36393F;
+}
+
+.dialog-pane:header .header-panel .label {
+    -fx-text-fill: #E7E7E7;
+    -fx-font-family: Consolas;
+    /*-fx-font-size: 1em;*/
+    -fx-font-size: 20px;
+}
+
+.dialog-pane .text-field {
+    -fx-background-color: #555A61;
+    -fx-text-fill: #E7E7E7;
+    -fx-font-family: Consolas;
+    -fx-font-size: 16px;
+}

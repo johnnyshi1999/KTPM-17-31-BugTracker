@@ -1,10 +1,7 @@
 package Presentation.ProjectWindow;
 
 import Business.ProjectManager;
-import DTO.IssueDTO;
 import DTO.ProjectDTO;
-import Entities.Issue;
-import Entities.Project;
 import Presentation.ProjectWindow.Pane.AddIssueController;
 import Presentation.ProjectWindow.Pane.ProjectHomeController;
 import com.jfoenix.controls.JFXButton;
@@ -33,7 +30,7 @@ public class ProjectMainCotroller implements Initializable {
     AddIssueController addIssueController = null;
     Stage stage;
     @FXML
-    AnchorPane PaneParent;
+    AnchorPane parentPane;
     @FXML
     JFXButton homeButton;
     @FXML
@@ -44,6 +41,10 @@ public class ProjectMainCotroller implements Initializable {
     VBox sidePaneVBox;
     public ProjectMainCotroller(ProjectDTO dto) {
         manager = new ProjectManager(dto);
+    }
+
+    public AnchorPane getParentPane() {
+        return parentPane;
     }
 
     public void load() {
@@ -66,8 +67,9 @@ public class ProjectMainCotroller implements Initializable {
         homeButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-//                setHighLightPaneSelection(homeButton);
+//
                 showHomePane();
+//                setHighLightPaneSelection(homeButton);
             }
         });
         homeButton.fire();
@@ -75,15 +77,16 @@ public class ProjectMainCotroller implements Initializable {
         addIssueButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-//                setHighLightPaneSelection(addIssueButton);
                 showAddIssuePane();
+//                setHighLightPaneSelection(addIssueButton);
+
             }
         });
     }
 
     private void showHomePane() {
         if (homeController == null) {
-            homeController = new ProjectHomeController(PaneParent, manager);
+            homeController = new ProjectHomeController(parentPane, manager);
         }
         homeController.load();
         homeButton.requestFocus();
@@ -91,7 +94,7 @@ public class ProjectMainCotroller implements Initializable {
 
     private void showAddIssuePane() {
         if (addIssueController == null) {
-            addIssueController = new AddIssueController(PaneParent, this);
+            addIssueController = new AddIssueController(this);
         }
         addIssueController.load();
     }
@@ -110,5 +113,6 @@ public class ProjectMainCotroller implements Initializable {
             nodeList.get(i).setStyle("-fx-background-color: null;");
         }
         button.setStyle("-fx-background-color: #788fe2");
+
     }
 }

@@ -1,8 +1,25 @@
 .button {
     -fx-text-fill: #E7E7E7;
-    -fx-alignment: LEFT;
+    -fx-alignment: CENTER-LEFT;
 }
 
 .button:focused {
+    -fx-background-color: #788fe2;
+}
+
+.toggle-button {
+    -fx-text-fill: #E7E7E7;
+    -fx-alignment: CENTER-LEFT;
+    -fx-font-size: 16px;
+    -fx-font-family: Consolas;
+    -fx-padding: 0 0 0 30;
+}
+
+.toggle-button:selected {
+    -fx-background-color: #788fe2;
+
+}
+
+.toggle-button:focused {
     -fx-background-color: #788fe2;
 }
