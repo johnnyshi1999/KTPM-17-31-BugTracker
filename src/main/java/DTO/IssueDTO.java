@@ -1,6 +1,9 @@
 package DTO;
 
+import Business.SharedPreference.IssueStatus;
 import Entities.Issue;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -11,13 +14,14 @@ public class IssueDTO {
     private StringProperty title = new SimpleStringProperty();
     private StringProperty description = new SimpleStringProperty();
     private StringProperty label = new SimpleStringProperty("");
-    private StringProperty status = new SimpleStringProperty();
+    private ObjectProperty<IssueStatus> status = new SimpleObjectProperty<IssueStatus>();
     private StringProperty assignee = new SimpleStringProperty("");
     private StringProperty dueDate = new SimpleStringProperty("");
+    private StringProperty note = new SimpleStringProperty("");
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm a");
+    private static SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm a");
 
-    public SimpleDateFormat getDateFormat() {
+    public static SimpleDateFormat getDateFormat() {
         return dateFormat;
     }
 
@@ -31,18 +35,9 @@ public class IssueDTO {
         else {
             setLabel("");
         }
-        switch (issue.getStatus()) {
-            case 0: {
-                setStatus("Open");
-                break;
-            }
-            case 1: {
-                setStatus("Working");
-                break;
-            }
-            case 2: {
-                setStatus("Resolved");
-                break;
+        for (IssueStatus status : IssueStatus.values()) {
+            if (status.value == issue.getStatus()) {
+                setStatus(status);
             }
         }
         if (issue.getAssignment() != null) {
@@ -87,11 +82,11 @@ public class IssueDTO {
         this.label.set(label);
     }
 
-    public String getStatus() {
+    public IssueStatus getStatus() {
         return status.get();
     }
 
-    public void setStatus(String status) {
+    public void setStatus(IssueStatus status) {
         this.status.set(status);
     }
 
@@ -111,6 +106,14 @@ public class IssueDTO {
         this.dueDate.set(dueDate);
     }
 
+    public String getNote() {
+        return note.get();
+    }
+
+    public void setNote(String note) {
+        this.note.set(note);
+    }
+
     public StringProperty titleProperty() {
         return title;
     }
@@ -123,7 +126,7 @@ public class IssueDTO {
         return label;
     }
 
-    public StringProperty statusProperty() {
+    public ObjectProperty<IssueStatus> statusProperty() {
         return status;
     }
 
@@ -133,5 +136,9 @@ public class IssueDTO {
 
     public StringProperty dueDateProperty() {
         return dueDate;
+    }
+
+    public StringProperty noteProperty() {
+        return note;
     }
 }

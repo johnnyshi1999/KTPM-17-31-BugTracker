@@ -1,17 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #26262B;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1047.0" style="-fx-background-color: #26262B;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1047.0" style="-fx-background-color: #C4C4C4;">
+         <children>
+            <Text layoutX="52.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" AnchorPane.leftAnchor="50.0">
+               <font>
+                  <Font name="Consolas Bold" size="16.0" />
+               </font>
+            </Text>
+            <TextField fx:id="titleTextField" layoutX="102.0" layoutY="10.0" prefHeight="38.0" prefWidth="890.0" AnchorPane.rightAnchor="50.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
       <ScrollPane hbarPolicy="NEVER" prefHeight="457.0" prefWidth="770.0" style="-fx-background-color: #26262B; fx-background: #26262B;" stylesheets="@../css/scrollpane.css" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="1047.0">
+               <children>
+                  <Text fill="#e7e7e7" layoutX="47.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" AnchorPane.leftAnchor="50.0">
+                     <font>
+                        <Font name="Consolas Bold" size="16.0" />
+                     </font>
+                  </Text>
+                  <TextArea fx:id="descriptionTextArea" layoutX="50.0" layoutY="39.0" prefHeight="200.0" prefWidth="935.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextArea>
+                  <AnchorPane fx:id="assignPane" layoutX="418.0" layoutY="294.0" prefHeight="336.0" prefWidth="578.0" style="-fx-border-color: #555A61; -fx-border-radius: 10;" AnchorPane.topAnchor="294.0">
+                     <children>
+                        <Text fill="#e7e7e7" layoutX="26.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assignee:">
+                           <font>
+                              <Font name="Consolas Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXComboBox editable="true" layoutX="128.0" layoutY="18.0" prefHeight="26.0" prefWidth="410.0" />
+                        <Text fill="#e7e7e7" layoutX="26.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Due Date:">
+                           <font>
+                              <Font name="Consolas Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXDatePicker fx:id="datePicker" defaultColor="#788fe2" layoutX="120.0" layoutY="83.0" prefHeight="30.0" prefWidth="200.0" />
+                        <JFXTimePicker fx:id="timePicker" defaultColor="#788fe2" editable="true" layoutX="338.0" layoutY="83.0" prefHeight="30.0" prefWidth="200.0" />
+                        <Text fill="#e7e7e7" layoutX="26.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note:">
+                           <font>
+                              <Font name="Consolas Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <TextArea fx:id="noteTextArea" layoutX="26.0" layoutY="164.0" prefHeight="140.0" prefWidth="509.0">
+                           <font>
+                              <Font size="15.0" />
+                           </font></TextArea>
+                     </children>
+                  </AnchorPane>
+                  <JFXToggleButton fx:id="assignToggleButton" layoutX="418.0" layoutY="244.0" text="Assignment" textFill="#e7e7e7">
+                     <font>
+                        <Font name="Consolas Bold" size="16.0" />
+                     </font>
+                  </JFXToggleButton>
+                  <AnchorPane layoutX="34.0" layoutY="293.0" prefHeight="336.0" prefWidth="330.0" style="-fx-border-color: #555A61; -fx-border-radius: 10;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="294.0">
+                     <children>
+                        <Text fill="#e7e7e7" layoutX="26.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Label:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="49.1171875">
+                           <font>
+                              <Font name="Consolas Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXComboBox fx:id="labelComboBox" editable="true" layoutX="27.0" layoutY="78.0" prefHeight="38.0" prefWidth="240.0" style="-fx-border-color: #555A61;" AnchorPane.leftAnchor="26.0" />
+                        <Text fill="#e7e7e7" layoutX="25.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="188.1171875">
+                           <font>
+                              <Font name="Consolas Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <JFXComboBox fx:id="statusComboBox" layoutX="26.0" layoutY="217.0" prefHeight="38.0" prefWidth="240.0" style="-fx-border-color: #555A61;" />
+                     </children>
+                  </AnchorPane>
+                  <JFXButton fx:id="saveButton" layoutX="321.0" layoutY="675.0" prefHeight="50.0" prefWidth="180.0" stylesheets="@../css/button.css" text="Save" />
+                  <JFXButton fx:id="cancelButton" cancelButton="true" layoutX="547.0" layoutY="675.0" prefHeight="50.0" prefWidth="180.0" stylesheets="@../css/cancel-button.css" text="Cancel" />
+               </children>
+               <padding>
+                  <Insets bottom="30.0" />
+               </padding>
+            </AnchorPane>
         </content>
       </ScrollPane>
-      <BorderPane prefHeight="60.0" prefWidth="1000.0" style="-fx-background-color: #555A61;" />
    </children>
+   <stylesheets>
+      <URL value="@../css/textfileld.css" />
+      <URL value="@../css/combobox.css" />
+   </stylesheets>
 </AnchorPane>

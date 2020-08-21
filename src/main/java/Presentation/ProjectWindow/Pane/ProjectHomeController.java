@@ -61,4 +61,8 @@ public class ProjectHomeController extends PaneController {
         });
 
     }
+
+    public ObservableList<IssueDTO> getIssues() {
+        return issues;
+    }
 }

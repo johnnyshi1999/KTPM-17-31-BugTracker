@@ -4,11 +4,13 @@ import DAO.IssueDAO;
 import DTO.IssueDTO;
 import DTO.ProjectDTO;
 import Entities.*;
+import javafx.beans.property.BooleanProperty;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class ProjectManager {
     private Project currentProject;
@@ -96,17 +98,27 @@ public class ProjectManager {
         issue.setLabel(getLabel(dto.getLabel()));
 
         if (assignRight) {
-            Assignment assignment = new Assignment();
-            assignment.setDev(getTeamMember(dto.getAssignee()));
-            try {
-                assignment.setDeadline(dto.getDateFormat().parse(dto.getDueDate()));
-            } catch (ParseException e) {
-                assignment.setDeadline(null);
+            User assignee = getTeamMember(dto.getAssignee());
+            if (assignee != null) {
+                Assignment assignment = new Assignment();
+                assignment.setDev(getTeamMember(dto.getAssignee()));
+                try {
+                    assignment.setDeadline(dto.getDateFormat().parse(dto.getDueDate()));
+                } catch (ParseException e) {
+                    assignment.setDeadline(null);
+                }
+                assignment.setNote(dto.getNote());
+                issue.setAssignment(assignment);
             }
         }
 
         currentProject.getIssues().add(issue);
+        issue.setId(UUID.randomUUID().toString());
         IssueDAO dao = new IssueDAO();
         dao.save(issue);
+    }
+
+    public boolean getAssignRight() {
+        return UserManager.getManager().getAssignRightOnProject(currentProject);
     }
 }
