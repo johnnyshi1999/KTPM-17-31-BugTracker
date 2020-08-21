@@ -234,16 +234,16 @@ CREATE TABLE `project_team` (
 
 LOCK TABLES `project_team` WRITE;
 /*!40000 ALTER TABLE `project_team` DISABLE KEYS */;
-INSERT INTO `project_team` VALUES ('1','10001', '1', '5', '2020-08-20 08:11:02');
-INSERT INTO `project_team` VALUES ('2','10002', '0', '6', '2020-08-19 10:01:03');
-INSERT INTO `project_team` VALUES ('4','10003', '5', '7', '2020-06-19 18:18:04');
-INSERT INTO `project_team` VALUES ('3','10004', '4', '5', '2020-07-21 09:17:01');
-INSERT INTO `project_team` VALUES ('5','10005', '3', '4', '2020-11-20 12:15:02');
-INSERT INTO `project_team` VALUES ('6','10001', '1', '5', '2020-08-20 08:11:02');
-INSERT INTO `project_team` VALUES ('7','10006', '3', '6', '2020-08-19 10:01:03');
-INSERT INTO `project_team` VALUES ('8','10007', '5', '7', '2020-06-19 18:18:04');
-INSERT INTO `project_team` VALUES ('9','10004', '4', '5', '2020-07-21 09:17:01');
-INSERT INTO `project_team` VALUES ('10','10005', '3', '4', '2020-11-20 12:15:02');
+INSERT INTO `project_team` VALUES ('1','10001', '1', '0', '2020-08-20 08:11:02');
+INSERT INTO `project_team` VALUES ('2','10002', '0', '1', '2020-08-19 10:01:03');
+INSERT INTO `project_team` VALUES ('4','10003', '1', '1', '2020-06-19 18:18:04');
+INSERT INTO `project_team` VALUES ('3','10004', '0', '1', '2020-07-21 09:17:01');
+INSERT INTO `project_team` VALUES ('5','10005', '1', '0', '2020-11-20 12:15:02');
+INSERT INTO `project_team` VALUES ('6','10001', '0', '0', '2020-08-20 08:11:02');
+INSERT INTO `project_team` VALUES ('7','10006', '0', '0', '2020-08-19 10:01:03');
+INSERT INTO `project_team` VALUES ('8','10007', '1', '1', '2020-06-19 18:18:04');
+INSERT INTO `project_team` VALUES ('9','10004', '1', '0', '2020-07-21 09:17:01');
+INSERT INTO `project_team` VALUES ('10','10005', '1', '1', '2020-11-20 12:15:02');
 /*!40000 ALTER TABLE `project_team` ENABLE KEYS */;
 UNLOCK TABLES;
 
