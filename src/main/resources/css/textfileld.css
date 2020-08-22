@@ -1,6 +1,8 @@
 .text-field {
     -fx-background-color: #555A61;
     -fx-text-fill: #E7E7E7;
+    -fx-font-family: Consolas;
+    -fx-font-size: 16px;
 }
 
 .text-area .content {
@@ -10,4 +12,7 @@
 
 .text-area {
     -fx-text-fill: #E7E7E7;
+    -fx-background-color: #555A61;
+    -fx-font-family: Consolas;
+    -fx-font-size: 15px;
 }

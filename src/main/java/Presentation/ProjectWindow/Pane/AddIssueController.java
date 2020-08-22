@@ -3,19 +3,16 @@ package Presentation.ProjectWindow.Pane;
 import Business.SharedPreference;
 import Business.SharedPreference.IssueStatus;
 import DTO.IssueDTO;
-import Presentation.PaneController.PaneController;
+import Presentation.CustomControllers.PaneController;
 import Presentation.ProjectWindow.ProjectMainCotroller;
 import com.jfoenix.controls.*;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 
@@ -32,6 +29,7 @@ public class AddIssueController extends PaneController {
     ProjectMainCotroller mediator;
     IssueDTO dto = null;
     ObservableList<String> labels;
+    ObservableList<String> members;
     @FXML
     TextField titleTextField;
     @FXML
@@ -67,7 +65,8 @@ public class AddIssueController extends PaneController {
         super(mediator.getParentPane(), "/ProjectWindow/issue-input.fxml");
         this.mediator = mediator;
         labels = FXCollections.observableArrayList(mediator.manager.getProjectLabels());
-        labels.add(null);
+        labels.add("");
+        members = FXCollections.observableArrayList(mediator.manager.getMemberNameList());
     }
 
     @Override
@@ -120,6 +119,28 @@ public class AddIssueController extends PaneController {
         });
         statusComboBox.getSelectionModel().select(0);
         statusComboBox.setDisable(true);
+
+        assigneeComboBox.setItems(members);
+        assigneeComboBox.setCellFactory(new Callback<ListView<String>,
+                ListCell<String>>() {
+            @Override
+            public ListCell<String> call(ListView<String> locationListView) {
+                final ListCell<String> listCell = new ListCell<String>() {
+                    @Override
+                    protected void updateItem(String t, boolean bln) {
+                        super.updateItem(t, bln);
+
+                        if(t != null){
+                            setText(t);
+                        }else{
+                            setText("None");
+                        }
+                    }
+
+                };
+                return listCell;
+            }
+        });
 
         saveButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override

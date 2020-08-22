@@ -13,6 +13,7 @@ public class IssueDAO implements DAOInterface<Issue>{
             session.persist(issue);
             session.flush();
             session.getTransaction().commit();
+
             issue.fireNotifiers();
             issue.getProject().fireNotifiers();
         } catch (Exception e) {
@@ -29,6 +30,7 @@ public class IssueDAO implements DAOInterface<Issue>{
             session.update(issue);
             session.flush();
             session.getTransaction().commit();
+
             issue.fireNotifiers();
             issue.getProject().fireNotifiers();
         } catch (Exception e) {
@@ -40,6 +42,17 @@ public class IssueDAO implements DAOInterface<Issue>{
 
     @Override
     public void delete(Issue issue) {
-
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            session.delete(issue);
+            session.flush();
+            session.getTransaction().commit();
+//            issue.fireNotifiers();
+            issue.getProject().fireNotifiers();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
     }
 }

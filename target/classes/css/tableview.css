@@ -1,24 +1,83 @@
 .table-column {
     -fx-alignment: center;
+    /*-fx-border-color: #E7E7E7;*/
+    -fx-padding: 0px;
 }
 .table-view {
-    -fx-border-color: null;
+    -fx-border-color: #E7E7E7;
+    -fx-padding: 0px;
     -fx-background-color: null;
+    -fx-background-insets: 0;
+    /*-fx-border-radius: 30 30 0 0;*/
+
 }
+
+/*.table-view .column-header-background{*/
+/*    -fx-background-color: #788fe2;*/
+/*}*/
+
+.table-view .column-header-background .label{
+    -fx-background-color: null;
+    -fx-text-fill: #E7E7E7;
+    -fx-font-size: 15px;
+    -fx-font-family: Consolas;
+    -fx-padding: 10 0 10 0;
+
+}
+
+.table-view .column-header {
+    -fx-background-color: #788fe2;
+    -fx-border-color: #E7E7E7;
+
+    /*-fx-border-radius: 30 30 0 0;*/
+    /*-fx-cell-size: 54;*/
+    /*-fx-padding: 30px;*/
+}
+
+/*.table-view .cell {*/
+/*    -fx-cell-size: 35;*/
+/*    -fx-background-color: #29292D;*/
+/*    -fx-border-color: #29292D;*/
+/*    -fx-text-fill: lightgray;*/
+/*    -fx-font-size: 16px;*/
+/*    -fx-font-family: Consolas;*/
+/*    -fx-alignment: center;*/
+/*}*/
+
 .table-row-cell {
-    -fx-font-size: 16px;
-    -fx-cell-size: 30px;
-    -fx-padding: 3px;
-    /*-fx-start-margin: 5px;*/
-    /*-fx-end-margin: 5px;*/
-    -fx-background-color: #C4C4C4;
-    -fx-background-insets: 1px;
-    /*-fx-border-width:0 0 0 0;*/
-    -fx-background-radius: 10;
-    -fx-alignment: center;
-    /*-fx-border-color: red;*/
+    -fx-cell-size: 50;
+    -fx-background-color: #29292D;
+    -fx-border-color: red;
     -fx-table-cell-border-color:null;
+    -fx-border-width:0 0 0 0;
+
+    -fx-text-background-color:  #E7e7e7;
+    -fx-font-size: 16px;
+    -fx-font-family: Consolas;
+    -fx-alignment: center;
 }
+.table-row-cell:selected {
+    -fx-background-color: #555A61;
+    -fx-text-background-color:  white;
+}
+
+/*.table-row-cell {*/
+/*    -fx-border-color: #E7E7E7;*/
+/*    -fx-padding: 0px;*/
+
+/*    -fx-cell-size: 30px;*/
+/*    !*-fx-padding: 3px;*!*/
+/*    -fx-start-margin: 5px;*/
+/*    -fx-end-margin: 5px;*/
+/*    -fx-background-color: #C4C4C4;*/
+/*    -fx-background-insets: 1px;*/
+/*    !*-fx-border-width:0 0 0 0;*!*/
+/*    -fx-background-radius: 10;*/
+/*    -fx-alignment: center;*/
+/*    -fx-border-color: red;*/
+/*    -fx-table-cell-border-color:null;*/
+/*}*/
+
 
 .scroll-bar:horizontal .track,
 .scroll-bar:vertical .track{

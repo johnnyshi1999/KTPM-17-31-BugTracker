@@ -1,12 +1,13 @@
 package Entities;
 
+import Business.INotifyChange;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class ProjectTeam implements Serializable {
+public class ProjectTeam extends INotifyChange implements Serializable {
     private Project project;
     private User user;
     private Date dateJoined;

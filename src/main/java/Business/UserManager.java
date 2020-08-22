@@ -3,6 +3,7 @@ package Business;
 import DAO.ProjectDAO;
 import DAO.ProjectTeamDAO;
 import DAO.UserDAO;
+import DTO.MemberDTO;
 import DTO.ProjectDTO;
 import Entities.Project;
 import Entities.ProjectTeam;
@@ -23,6 +24,12 @@ public class UserManager {
             manager = new UserManager();
         }
         return manager;
+    }
+
+    User findUserByUsername(String username) {
+        UserDAO userDAO = new UserDAO();
+        User user = userDAO.findByUsername(username);
+        return user;
     }
 
     public User getLoggedInUser() {

@@ -3,6 +3,7 @@ package Presentation.ProjectWindow;
 import Business.ProjectManager;
 import DTO.ProjectDTO;
 import Presentation.ProjectWindow.Pane.AddIssueController;
+import Presentation.ProjectWindow.Pane.MemberController;
 import Presentation.ProjectWindow.Pane.ProjectHomeController;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -28,6 +29,7 @@ public class ProjectMainCotroller implements Initializable {
     public ProjectManager manager;
     ProjectHomeController homeController = null;
     AddIssueController addIssueController = null;
+    MemberController memberController = null;
     Stage stage;
     @FXML
     AnchorPane parentPane;
@@ -35,6 +37,8 @@ public class ProjectMainCotroller implements Initializable {
     JFXButton homeButton;
     @FXML
     JFXButton addIssueButton;
+    @FXML
+    JFXButton teamButton;
     @FXML
     Text titleText;
     @FXML
@@ -82,21 +86,38 @@ public class ProjectMainCotroller implements Initializable {
 
             }
         });
+
+        teamButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                showTeamPane();
+            }
+        });
     }
 
     private void showHomePane() {
         if (homeController == null) {
-            homeController = new ProjectHomeController(parentPane, manager);
+            homeController = new ProjectHomeController(this);
         }
         homeController.load();
         homeButton.requestFocus();
     }
 
     private void showAddIssuePane() {
-        if (addIssueController == null) {
-            addIssueController = new AddIssueController(this);
-        }
+//        if (addIssueController == null) {
+//            addIssueController = new AddIssueController(this);
+//        }
+        addIssueController = new AddIssueController(this);
         addIssueController.load();
+        addIssueButton.requestFocus();
+    }
+
+    private void showTeamPane() {
+        if (memberController == null) {
+            memberController = new MemberController(this);
+        }
+        memberController.load();
+        teamButton.requestFocus();
     }
 
     public void returnToHome() {

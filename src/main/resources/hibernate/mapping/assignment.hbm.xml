@@ -11,11 +11,14 @@
 <!--            </key-many-to-one>-->
 <!--        </composite-id>-->
 
-        <id name="issue" column="issue_id">
+        <id name="id" column="issue_id">
             <generator class="foreign">
                 <param name="property">issue</param>
             </generator>
         </id>
+
+        <one-to-one name="issue" class="Entities.Issue"
+                    constrained="true"></one-to-one>
 
         <many-to-one class="Entities.User" name="dev"
                      fetch="select" lazy="false">

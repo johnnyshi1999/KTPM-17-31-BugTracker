@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1047.0" style="-fx-background-color: #26262B;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView layoutX="246.0" layoutY="132.0" prefHeight="439.0" prefWidth="646.0" stylesheets="@../css/tableview.css">
+        <columns>
+          <TableColumn prefWidth="200.0" text="Username" />
+          <TableColumn minWidth="0.0" prefWidth="200.0" text="Assign Right" />
+            <TableColumn prefWidth="200.0" text="Team manage Right" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>

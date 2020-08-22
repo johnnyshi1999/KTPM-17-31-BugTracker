@@ -9,11 +9,20 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Assignment implements Serializable {
+    private String id;
     private Issue issue;
     private User dev;
     private User creator;
     private ObjectProperty<Date> deadline = new SimpleObjectProperty<Date>();
     private StringProperty note = new SimpleStringProperty();
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Issue getIssue() {
         return issue;

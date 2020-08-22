@@ -2,7 +2,7 @@ package Presentation.HomeWindow.Panes;
 
 import Business.UserManager;
 import DTO.ProjectDTO;
-import Presentation.PaneController.PaneController;
+import Presentation.CustomControllers.PaneController;
 import Presentation.ProjectInfoController;
 import Presentation.ProjectWindow.ProjectMainCotroller;
 import javafx.collections.FXCollections;

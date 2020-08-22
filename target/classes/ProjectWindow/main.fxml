@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -37,7 +36,7 @@
           <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <AnchorPane fx:id="PaneParent" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+            <AnchorPane fx:id="parentPane" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
             <VBox fx:id="sidePaneVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="233.0" style="-fx-background-color: #555A61;" stylesheets="@../css/sidepane-cell.css">
                <children>
                   <JFXButton fx:id="homeButton" buttonType="RAISED" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="233.0" ripplerFill="#788fe2" stylesheets="@../css/sidepane-cell.css" text="Home" VBox.vgrow="NEVER">
@@ -56,7 +55,7 @@
                         <Insets left="30.0" />
                      </padding>
                   </JFXButton>
-                  <JFXButton fx:id="addIssueButton1" buttonType="RAISED" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="233.0" ripplerFill="#788fe2" stylesheets="@../css/sidepane-cell.css" text="Add Issue">
+                  <JFXButton fx:id="teamButton" buttonType="RAISED" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="233.0" ripplerFill="#788fe2" stylesheets="@../css/sidepane-cell.css" text="Prject Team">
                      <font>
                         <Font name="Consolas Bold" size="16.0" />
                      </font>
@@ -64,7 +63,6 @@
                         <Insets left="30.0" />
                      </padding>
                   </JFXButton>
-                  <ToggleButton mnemonicParsing="false" text="ToggleButton" />
                </children>
             </VBox>
          </children>

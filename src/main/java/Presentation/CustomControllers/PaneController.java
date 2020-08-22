@@ -1,12 +1,10 @@
-package Presentation.PaneController;
+package Presentation.CustomControllers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public abstract class PaneController implements Initializable {
     public Pane parent;

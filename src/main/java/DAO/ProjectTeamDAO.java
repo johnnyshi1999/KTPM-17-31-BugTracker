@@ -13,6 +13,7 @@ public class ProjectTeamDAO implements DAOInterface<ProjectTeam>{
             session.persist(projectTeam);
             session.flush();
             session.getTransaction().commit();
+            projectTeam.getProject().fireNotifiers();
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();

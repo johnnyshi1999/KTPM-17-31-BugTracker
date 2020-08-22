@@ -8,20 +8,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #26262B;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1047.0" style="-fx-background-color: #26262B;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="projectTableView" layoutX="40.0" layoutY="65.0" prefHeight="500.0" prefWidth="920.0" style="-fx-background-color: null;" stylesheets="@../css/tableview.css" tableMenuButtonVisible="true">
+      <TableView fx:id="projectTableView" layoutX="64.0" layoutY="102.0" prefHeight="500.0" prefWidth="920.0" style="-fx-background-color: null;" stylesheets="@../css/tableview.css">
          <columns>
-            <TableColumn fx:id="nameColumn" text="Project Name" />
-            <TableColumn fx:id="issueColumn" maxWidth="2000.0" prefWidth="2000.0" text="Open Issues" />
-            <TableColumn fx:id="memberColumn" maxWidth="2000.0" prefWidth="2000.0" text="Members" />
-            <TableColumn fx:id="dateCreatedColumn" maxWidth="4000.0" prefWidth="4000.0" text="Date Created" />
+            <TableColumn fx:id="nameColumn" maxWidth="1000.0" minWidth="100.0" text="Project Name" />
+            <TableColumn fx:id="issueColumn" maxWidth="1000.0" minWidth="100.0" text="Open Issues" />
+            <TableColumn fx:id="memberColumn" maxWidth="1000.0" minWidth="100.0" text="Members" />
+            <TableColumn fx:id="dateCreatedColumn" maxWidth="1000.0" minWidth="100.0" text="Date Created" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="newProjectButton" layoutX="40.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: null;" text="New Project" textFill="#e7e7e7">
+      <Button fx:id="newProjectButton" layoutX="64.0" layoutY="58.0" mnemonicParsing="false" style="-fx-background-color: null;" text="New Project" textFill="#e7e7e7">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -33,7 +33,7 @@
             <Font name="Consolas" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="deleteButton" layoutX="776.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: null;" text="Delete Selected" textFill="#e7e7e7">
+      <Button fx:id="deleteButton" layoutX="800.0" layoutY="58.0" mnemonicParsing="false" style="-fx-background-color: null;" text="Delete Selected" textFill="#e7e7e7">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -51,4 +51,23 @@ public class UserDAO implements DAOInterface<User>{
     public void delete(User user) {
 
     }
+
+    public User findByUsername(String username) {
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        User user = null;
+        try {
+            session.getTransaction().begin();
+            Query query = session.createNativeQuery("select * from user where user.username = :username")
+                    .addEntity(User.class)
+                    .setParameter("username", username);
+            user = (User) query.getSingleResult();
+
+
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        return user;
+    }
 }
