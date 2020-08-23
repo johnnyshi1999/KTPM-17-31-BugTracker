@@ -36,46 +36,6 @@
                </font>
             </Text>
             <TextField fx:id="emailTextField" alignment="CENTER" editable="false" layoutX="36.0" layoutY="167.0" prefHeight="30.0" prefWidth="400.0" />
-            <Text fill="#e7e7e7" layoutX="53.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Projects Owned:">
-               <font>
-                  <Font name="Consolas" size="16.0" />
-               </font>
-            </Text>
-            <Text fill="#e7e7e7" layoutX="53.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Projects Joined:">
-               <font>
-                  <Font name="Consolas" size="16.0" />
-               </font>
-            </Text>
-            <Text fill="#e7e7e7" layoutX="53.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tasks finished:" AnchorPane.leftAnchor="53.0">
-               <font>
-                  <Font name="Consolas" size="16.0" />
-               </font>
-            </Text>
-            <Text fill="#e7e7e7" layoutX="53.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tasks created:" AnchorPane.leftAnchor="53.0">
-               <font>
-                  <Font name="Consolas" size="16.0" />
-               </font>
-            </Text>
-            <Text fill="#e7e7e7" layoutX="222.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Projects Owned:">
-               <font>
-                  <Font name="Consolas" size="16.0" />
-               </font>
-            </Text>
-            <Text fill="#e7e7e7" layoutX="222.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Projects Owned:">
-               <font>
-                  <Font name="Consolas" size="16.0" />
-               </font>
-            </Text>
-            <Text fill="#e7e7e7" layoutX="222.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Projects Owned:">
-               <font>
-                  <Font name="Consolas" size="16.0" />
-               </font>
-            </Text>
-            <Text fill="#e7e7e7" layoutX="222.0" layoutY="387.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Projects Owned:">
-               <font>
-                  <Font name="Consolas" size="16.0" />
-               </font>
-            </Text>
             <HBox fx:id="editEmailHBox" alignment="CENTER" layoutX="452.0" layoutY="167.0" visible="false">
                <children>
                   <JFXButton fx:id="saveEmailButton" style="-fx-font-size: 15;" stylesheets="@../css/button.css" text="Save" />

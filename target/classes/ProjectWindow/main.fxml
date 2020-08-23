@@ -40,7 +40,7 @@
                <children>
                   <JFXButton fx:id="homeButton" prefHeight="44.0" prefWidth="233.0" text="Home" />
                   <JFXButton fx:id="addIssueButton" prefHeight="44.0" prefWidth="233.0" text="Add Issue" />
-                  <JFXButton fx:id="memberButton" prefHeight="44.0" prefWidth="233.0" text="Member" />
+                  <JFXButton fx:id="teamButton" prefHeight="44.0" prefWidth="233.0" text="Member" />
                </children>
             </VBox>
          </children>

@@ -17,6 +17,7 @@ public class ProjectDTO {
     private StringProperty description = new SimpleStringProperty();
     private StringProperty dateCreated = new SimpleStringProperty();
     private IntegerProperty openIssues = new SimpleIntegerProperty();
+    private StringProperty creator = new SimpleStringProperty();
     private IntegerProperty members = new SimpleIntegerProperty();
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm a");
@@ -25,6 +26,7 @@ public class ProjectDTO {
         id = project.getId();
         title.set(project.getName());
         description.set(project.getDescription());
+        creator.set(project.getManager().getUsername());
         dateCreated.set(dateFormat.format(project.getDateCreated()));
         int count = 0;
         for (Issue issue : project.getIssues()) {
@@ -78,6 +80,14 @@ public class ProjectDTO {
         this.openIssues.set(openIssues);
     }
 
+    public String getCreator() {
+        return creator.get();
+    }
+
+    public void setCreator(String creator) {
+        this.creator.set(creator);
+    }
+
     public int getMembers() {
         return members.get();
     }
@@ -96,6 +106,10 @@ public class ProjectDTO {
 
     public StringProperty dateCreatedProperty() {
         return dateCreated;
+    }
+
+    public StringProperty creatorProperty() {
+        return creator;
     }
 
     public IntegerProperty openIssuesProperty() {

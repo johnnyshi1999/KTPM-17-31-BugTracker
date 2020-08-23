@@ -35,12 +35,12 @@
             <Font name="Consolas" size="18.0" />
          </font>
       </TextField>
-      <JFXCheckBox fx:id="usernameCheckBox" layoutX="553.0" layoutY="44.0" selected="true" text="Title" textFill="#e7e7e7">
+      <JFXCheckBox fx:id="titleCheckBox" layoutX="553.0" layoutY="44.0" selected="true" text="Title" textFill="#e7e7e7">
          <font>
             <Font name="Consolas" size="18.0" />
          </font>
       </JFXCheckBox>
-      <JFXCheckBox fx:id="fullNameCheckBox" layoutX="682.0" layoutY="44.0" selected="true" text="Description" textFill="#e7e7e7">
+      <JFXCheckBox fx:id="descriptionCheckBox" layoutX="682.0" layoutY="44.0" selected="true" text="Description" textFill="#e7e7e7">
          <font>
             <Font name="Consolas" size="18.0" />
          </font>
@@ -50,7 +50,7 @@
             <Font name="Consolas" size="20.0" />
          </font>
       </Text>
-      <JFXCheckBox fx:id="emailCheckBox" layoutX="861.0" layoutY="42.0" selected="true" text="Username" textFill="#e7e7e7">
+      <JFXCheckBox fx:id="usernameCheckBox" layoutX="861.0" layoutY="42.0" selected="true" text="Username" textFill="#e7e7e7">
          <font>
             <Font name="Consolas" size="18.0" />
          </font>

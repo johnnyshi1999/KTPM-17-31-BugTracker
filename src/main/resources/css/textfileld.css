@@ -5,6 +5,10 @@
     -fx-font-size: 16px;
 }
 
+.text-field:readonly {
+    -fx-text-fill: #E7E7E7;
+}
+
 .text-area .content {
     -fx-background-color: #555A61;
 
@@ -15,4 +19,12 @@
     -fx-background-color: #555A61;
     -fx-font-family: Consolas;
     -fx-font-size: 15px;
+}
+
+.label {
+    -fx-background-color: #555A61;
+    -fx-text-fill: #E7E7E7;
+    -fx-font-family: Consolas;
+    -fx-font-size: 16px;
+    -fx-background-radius: 5;
 }

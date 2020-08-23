@@ -111,7 +111,6 @@ public class MemberController extends PaneController<ProjectMainCotroller> {
         memberTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<MemberDTO>() {
             @Override
             public void changed(ObservableValue<? extends MemberDTO> observableValue, MemberDTO dto, MemberDTO t1) {
-                showMemberInfo(t1);
                 if (t1 != null) {
                     editButton.setDisable(false);
                     deleteButton.setDisable(false);
@@ -120,6 +119,7 @@ public class MemberController extends PaneController<ProjectMainCotroller> {
                     editButton.setDisable(true);
                     deleteButton.setDisable(true);
                 }
+                showSelectedInfo(t1);
             }
         });
         memberTableView.getSelectionModel().clearSelection();
@@ -193,10 +193,6 @@ public class MemberController extends PaneController<ProjectMainCotroller> {
 //        memberTableView.setItems(members);
     }
 
-    private void showMemberInfo(MemberDTO dto) {
-
-    }
-
     private List<MemberDTO> searchMember(String username) {
         List<MemberDTO> result = new ArrayList<>();
 
@@ -233,6 +229,23 @@ public class MemberController extends PaneController<ProjectMainCotroller> {
             addButton.setOnAction(handler);
             editButton.setOnAction(handler);
             deleteButton.setOnAction(handler);
+        }
+    }
+
+    private void showSelectedInfo(MemberDTO selected) {
+        if (selected != null) {
+            usernameText.setText(selected.getUsername());
+            emailText.setText(selected.getEmail());
+            dateJoinedText.setText(selected.getDateJoined());
+            assignCheckBox.setSelected(selected.isAssignRight());
+            inviteCheckBox.setSelected(selected.isInviteRight());
+        }
+        else {
+            usernameText.setText("");
+            emailText.setText("");
+            dateJoinedText.setText("");
+            assignCheckBox.setSelected(false);
+            inviteCheckBox.setSelected(false);
         }
     }
 }

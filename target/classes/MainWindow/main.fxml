@@ -65,8 +65,6 @@
                         </Text>
                         <MenuButton fx:id="userMenuButton" mnemonicParsing="false" style="-fx-background-color: null;" stylesheets="@../css/profileicon.css" textFill="WHITE">
                           <items>
-                              <MenuItem mnemonicParsing="false" text="Change Password" />
-                              <MenuItem mnemonicParsing="false" text="Change Email" />
                             <MenuItem fx:id="logoutMenuItem" mnemonicParsing="false" text="Log out" />
                           </items>
                            <HBox.margin>

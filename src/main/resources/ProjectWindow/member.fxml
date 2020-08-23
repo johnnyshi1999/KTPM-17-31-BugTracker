@@ -69,14 +69,14 @@
             <Font name="Consolas" size="15.0" />
          </font>
       </Button>
-      <AnchorPane layoutX="713.0" layoutY="108.0" prefHeight="398.0" prefWidth="303.0" style="-fx-border-color: #e7e7e7; -fx-border-radius: 10;">
+      <AnchorPane layoutX="713.0" layoutY="108.0" prefHeight="398.0" prefWidth="303.0" style="-fx-border-color: #e7e7e7; -fx-border-radius: 10;" stylesheets="@../css/readonly-style.css">
          <children>
             <Text fill="#e7e7e7" layoutX="22.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" AnchorPane.leftAnchor="22.0">
                <font>
                   <Font name="Consolas" size="16.0" />
                </font>
             </Text>
-            <TextField fx:id="usernameText" editable="false" layoutX="22.0" layoutY="41.0" prefHeight="30.0" prefWidth="263.0" AnchorPane.leftAnchor="22.0">
+            <TextField fx:id="usernameText" alignment="CENTER" editable="false" layoutX="22.0" layoutY="41.0" prefHeight="30.0" prefWidth="263.0" stylesheets="@../css/readonly-style.css" AnchorPane.leftAnchor="22.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -86,7 +86,7 @@
                   <Font name="Consolas" size="16.0" />
                </font>
             </Text>
-            <TextField fx:id="emailText" editable="false" layoutX="23.0" layoutY="123.0" prefHeight="30.0" prefWidth="263.0" AnchorPane.leftAnchor="22.0">
+            <TextField fx:id="emailText" alignment="CENTER" editable="false" layoutX="23.0" layoutY="123.0" prefHeight="30.0" prefWidth="263.0" stylesheets="@../css/readonly-style.css" AnchorPane.leftAnchor="22.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -96,17 +96,17 @@
                   <Font name="Consolas" size="16.0" />
                </font>
             </Text>
-            <TextField fx:id="dateJoinedText" editable="false" layoutX="23.0" layoutY="217.0" prefHeight="30.0" prefWidth="263.0" AnchorPane.leftAnchor="23.0">
+            <TextField fx:id="dateJoinedText" alignment="CENTER" editable="false" layoutX="23.0" layoutY="217.0" prefHeight="30.0" prefWidth="263.0" stylesheets="@../css/readonly-style.css" AnchorPane.leftAnchor="23.0">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <JFXCheckBox fx:id="assignCheckBox" disable="true" layoutX="31.0" layoutY="285.0" stylesheets="@../css/read-only-checkbbox.css" text="Allowed to give Assignment" textFill="#e7e7e7" AnchorPane.leftAnchor="31.0">
+            <JFXCheckBox fx:id="assignCheckBox" disable="true" layoutX="31.0" layoutY="285.0" text="Allowed to give Assignment" textFill="#e7e7e7" AnchorPane.leftAnchor="31.0">
                <font>
                   <Font name="Consolas" size="15.0" />
                </font>
             </JFXCheckBox>
-            <JFXCheckBox fx:id="inviteCheckBox" disable="true" layoutX="32.0" layoutY="329.0" stylesheets="@../css/read-only-checkbbox.css" text="Allowed to manage Team" textFill="#e7e7e7" AnchorPane.leftAnchor="32.0">
+            <JFXCheckBox fx:id="inviteCheckBox" disable="true" layoutX="32.0" layoutY="329.0" text="Allowed to manage Team" textFill="#e7e7e7" AnchorPane.leftAnchor="32.0">
                <font>
                   <Font name="Consolas" size="15.0" />
                </font>
