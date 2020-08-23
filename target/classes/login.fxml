@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="390.0" style="-fx-background-color: #26262B;" stylesheets="@css/textfileld.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fill="#e7e7e7" layoutX="43.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" AnchorPane.leftAnchor="43.0">
+         <font>
+            <Font name="Consolas" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="#e7e7e7" layoutX="43.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
+         <font>
+            <Font name="Consolas" size="16.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="registerButton" layoutX="42.0" layoutY="190.0" stylesheets="@css/button.css" text="Create new account" />
+      <JFXButton fx:id="loginButton" layoutX="266.0" layoutY="189.0" prefHeight="32.0" prefWidth="79.0" stylesheets="@css/cancel-button.css" text="Login" />
+      <Text fx:id="errorText" fill="RED" layoutX="43.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="304.0">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font>
+      </Text>
+      <JFXPasswordField fx:id="passwordField" layoutX="43.0" layoutY="122.0" prefHeight="30.0" prefWidth="304.0" />
+      <JFXTextField fx:id="usernameTextField" layoutX="43.0" layoutY="56.0" prefHeight="30.0" prefWidth="304.0" />
+   </children>
+</AnchorPane>

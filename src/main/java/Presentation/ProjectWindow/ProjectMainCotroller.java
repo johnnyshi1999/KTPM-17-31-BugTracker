@@ -1,6 +1,9 @@
 package Presentation.ProjectWindow;
 
+import Business.INotifyChange;
+import Business.Notifier;
 import Business.ProjectManager;
+import Business.UserManager;
 import DTO.ProjectDTO;
 import Presentation.ProjectWindow.Pane.AddIssueController;
 import Presentation.ProjectWindow.Pane.MemberController;
@@ -60,6 +63,13 @@ public class ProjectMainCotroller implements Initializable {
             stage.setScene(new Scene(root));
             stage.initModality(Modality.NONE);
             stage.show();
+
+            UserManager.getManager().getNotifiers().add(new Notifier() {
+                @Override
+                public void notifyChange(INotifyChange t) {
+                    checkAccess();
+                }
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -135,5 +145,11 @@ public class ProjectMainCotroller implements Initializable {
         }
         button.setStyle("-fx-background-color: #788fe2");
 
+    }
+
+    public void checkAccess() {
+        if (UserManager.getManager().getLoggedInUserInfo() == null) {
+            stage.close();
+        }
     }
 }

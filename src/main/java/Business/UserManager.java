@@ -5,6 +5,7 @@ import DAO.ProjectTeamDAO;
 import DAO.UserDAO;
 import DTO.MemberDTO;
 import DTO.ProjectDTO;
+import DTO.UserDTO;
 import Entities.Project;
 import Entities.ProjectTeam;
 import Entities.User;
@@ -13,11 +14,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class UserManager {
+public class UserManager extends INotifyChange {
 
     private static UserManager manager = null;
     private User loggedInUser = null;
+    private UserDTO dto = null;
     private static List<ProjectTeam> projects = null;
+
+    public static void bindDtoToObject(User user, UserDTO dto) {
+        Notifier notifier = new Notifier() {
+            @Override
+            public void notifyChange(INotifyChange t) {
+                dto.copyInfo(user);
+            }
+        };
+        user.getNotifiers().add(notifier);
+    }
 
     public static UserManager getManager() {
         if (manager == null) {
@@ -32,12 +44,49 @@ public class UserManager {
         return user;
     }
 
-    public User getLoggedInUser() {
+    User getLoggedInUser() {
         return loggedInUser;
     }
 
-    public void setLoggedInUser(String username, String password) {
+    public UserDTO getLoggedInUserInfo() {
+        return dto;
+    }
+
+    public boolean setLoggedInUser(String username, String password) {
+
         loggedInUser = new UserDAO().getLoggedInUser(username, password);
+        if (loggedInUser != null) {
+            dto = new UserDTO();
+            dto.copyInfo(loggedInUser);
+            bindDtoToObject(loggedInUser, dto);
+
+            fireNotifiers();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean setLoggedInUser(User user) {
+        loggedInUser = user;
+        if (loggedInUser != null) {
+            dto = new UserDTO();
+            dto.copyInfo(loggedInUser);
+            bindDtoToObject(loggedInUser, dto);
+
+            fireNotifiers();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public void removeLoggedInUser() {
+        loggedInUser = null;
+        dto = null;
+        fireNotifiers();
     }
 
     public void createProject(ProjectDTO dto) throws Exception {
@@ -113,5 +162,39 @@ public class UserManager {
             }
         }
         return false;
+    }
+
+    public void registerUser(UserDTO userDTO) throws Exception {
+        UserDAO userDAO = new UserDAO();
+        boolean check = userDAO.validateUsername(userDTO.getUsername());
+
+        if (check == false) {
+            throw new Exception("Username is taken, please choose another one");
+        }
+
+        User user = new User();
+        user.setUsername(userDTO.getUsername());
+        user.setPassword(userDTO.getPassword());
+        user.setEmail(userDTO.getEmail());
+
+        userDAO.save(user);
+        bindDtoToObject(user, userDTO);
+        setLoggedInUser(user);
+    }
+
+    public boolean getInviteRightOnProject(Project currentProject) {
+        for (ProjectTeam projectTeam : loggedInUser.getProjects()) {
+            if (projectTeam.getProject().getId() == currentProject.getId()) {
+                return projectTeam.isInviteRight();
+            }
+        }
+        return false;
+    }
+
+    public void editUserInfo() {
+        loggedInUser.setPassword(dto.getPassword());
+        loggedInUser.setEmail(dto.getEmail());
+
+        new UserDAO().update(loggedInUser);
     }
 }

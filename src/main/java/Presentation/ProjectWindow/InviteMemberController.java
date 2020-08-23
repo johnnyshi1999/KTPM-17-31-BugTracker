@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -69,8 +70,8 @@ public class InviteMemberController implements Initializable {
                 try {
                     getInput();
                     manager.inviteUser(dto);
+                    confirmText.setFill(Color.GREEN);
                     confirmText.setText("User invited successfully");
-                    confirmText.setStyle("-fx-text-fill: forestgreen");
                     usernameTextField.setEditable(false);
                     assignCheckBox.setDisable(true);
                     inviteCheckBox.setDisable(true);
@@ -78,7 +79,7 @@ public class InviteMemberController implements Initializable {
                 } catch (Exception e) {
                     dto = null;
                     confirmText.setText(e.getMessage());
-                    confirmText.setStyle("-fx-text-fill: red");
+                    confirmText.setFill(Color.RED);
                 }
             }
         });

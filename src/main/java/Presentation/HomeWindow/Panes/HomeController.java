@@ -3,6 +3,7 @@ package Presentation.HomeWindow.Panes;
 import Business.UserManager;
 import DTO.ProjectDTO;
 import Presentation.CustomControllers.PaneController;
+import Presentation.HomeWindow.MainController;
 import Presentation.ProjectInfoController;
 import Presentation.ProjectWindow.ProjectMainCotroller;
 import javafx.collections.FXCollections;
@@ -17,11 +18,13 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HomeController extends PaneController {
+public class HomeController extends PaneController<MainController> {
     @FXML
     TableView<ProjectDTO> projectTableView;
     @FXML
@@ -91,5 +94,14 @@ public class HomeController extends PaneController {
 
 
 
+    }
+    @Override
+    public void checkAccess() {
+//        if (UserManager.getManager().getLoggedInUser() == null) {
+//            projects.clear();
+//        }
+//        else {
+//            projects = FXCollections.observableArrayList(UserManager.getManager().getUserProjects());
+//        }
     }
 }

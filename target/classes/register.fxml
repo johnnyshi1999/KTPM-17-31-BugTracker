@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="420.0" style="-fx-background-color: #26262B;" stylesheets="@css/textfileld.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fill="#e7e7e7" layoutX="48.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
+         <font>
+            <Font name="Consolas" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="#e7e7e7" layoutX="48.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:">
+         <font>
+            <Font name="Consolas" size="16.0" />
+         </font>
+      </Text>
+      <JFXPasswordField fx:id="passwordField" layoutX="48.0" layoutY="119.0" prefHeight="30.0" prefWidth="304.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="48.0" />
+      <JFXTextField fx:id="usernameTextField" layoutX="48.0" layoutY="53.0" prefHeight="30.0" prefWidth="318.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="48.0" />
+      <Text fill="#e7e7e7" layoutX="48.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm password">
+         <font>
+            <Font name="Consolas" size="16.0" />
+         </font>
+      </Text>
+      <JFXPasswordField fx:id="confirmPasswordField" layoutX="48.0" layoutY="189.0" prefHeight="30.0" prefWidth="304.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="48.0" />
+      <Text fill="#e7e7e7" layoutX="48.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+         <font>
+            <Font name="Consolas" size="16.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="emailTextField" layoutX="48.0" layoutY="258.0" prefHeight="30.0" prefWidth="304.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="48.0" />
+      <JFXButton fx:id="okButton" layoutX="48.0" layoutY="335.0" prefHeight="32.0" prefWidth="78.0" style="-fx-font-size: 15;" stylesheets="@css/button.css" text="Sign up" />
+      <JFXButton fx:id="backButton" layoutX="172.0" layoutY="333.0" prefHeight="32.0" prefWidth="200.0" style="-fx-font-size: 15;" stylesheets="@css/cancel-button.css" text="I already have acount">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </JFXButton>
+      <Text fx:id="errorText" fill="RED" layoutX="58.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="304.0">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

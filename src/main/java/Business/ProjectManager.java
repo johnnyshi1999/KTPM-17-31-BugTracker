@@ -141,6 +141,10 @@ public class ProjectManager {
         return UserManager.getManager().getAssignRightOnProject(currentProject);
     }
 
+    public boolean getInviteRight() {
+        return UserManager.getManager().getInviteRightOnProject(currentProject);
+    }
+
     public void createLabel(String labelStr) {
         Label label = new Label();
         label.setLabelName(labelStr);
@@ -226,4 +230,14 @@ public class ProjectManager {
     public void inviteUser(MemberDTO memberDTO) throws Exception {
         teamManager.addUserToTeam(memberDTO);
     }
+
+    public void editMemberRight(MemberDTO dto) {
+        teamManager.editMemberRight(dto);
+    }
+
+    public void removeMember(MemberDTO dto) {
+        teamManager.removeMember(dto);
+    }
+
+
 }

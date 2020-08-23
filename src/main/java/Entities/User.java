@@ -1,5 +1,6 @@
 package Entities;
 
+import Business.INotifyChange;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -14,7 +15,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class User implements Serializable {
+public class User extends INotifyChange implements Serializable {
     private int id;
     private String username;
     private String password;

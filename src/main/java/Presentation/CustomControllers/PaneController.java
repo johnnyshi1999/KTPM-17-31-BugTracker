@@ -1,14 +1,18 @@
 package Presentation.CustomControllers;
 
+import Business.INotifyChange;
+import Business.Notifier;
+import Business.UserManager;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public abstract class PaneController implements Initializable {
+public abstract class PaneController<T> implements Initializable {
     public Pane parent;
     public Pane container = null;
+    protected T mediator;
     public FXMLLoader loader;
 
     public PaneController(Pane parent, String fxmlFile) {
@@ -27,5 +31,20 @@ public abstract class PaneController implements Initializable {
         }
         parent.getChildren().clear();
         parent.getChildren().add(container);
+        setUserAccessListener();
+        checkAccess();
     }
+
+    protected void setUserAccessListener() {
+        Notifier notifier = new Notifier() {
+            @Override
+            public void notifyChange(INotifyChange t) {
+                checkAccess();
+            }
+        };
+
+//        UserManager.getManager().getNotifiers().add(notifier);
+    }
+
+    public abstract void checkAccess();
 }

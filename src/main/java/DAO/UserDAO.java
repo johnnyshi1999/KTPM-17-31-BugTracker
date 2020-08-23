@@ -1,11 +1,14 @@
 package DAO;
 
+import Business.INotifyChange;
 import Entities.User;
 import hibernate.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-public class UserDAO implements DAOInterface<User>{
+import java.util.List;
+
+public class UserDAO extends INotifyChange implements DAOInterface<User>{
 
     public User getLoggedInUser(String username, String password) {
         Session session = HibernateUtils.getSessionFactory().getCurrentSession();
@@ -30,7 +33,17 @@ public class UserDAO implements DAOInterface<User>{
 
     @Override
     public void save(User user) {
-
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            session.save(user);
+            session.flush();
+            session.getTransaction().commit();
+            user.fireNotifiers();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
     }
 
     @Override
@@ -41,6 +54,7 @@ public class UserDAO implements DAOInterface<User>{
             session.update(user);
             session.flush();
             session.getTransaction().commit();
+            user.fireNotifiers();
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
@@ -69,5 +83,29 @@ public class UserDAO implements DAOInterface<User>{
             session.getTransaction().rollback();
         }
         return user;
+    }
+
+    public boolean validateUsername(String username) {
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            Query query = session.createNativeQuery("select * from user where user.username = :username")
+                    .addEntity(User.class)
+                    .setParameter("username", username);
+            List<User> userList = query.getResultList();
+
+            session.getTransaction().commit();
+
+            if (userList.size() == 0) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        return false;
     }
 }

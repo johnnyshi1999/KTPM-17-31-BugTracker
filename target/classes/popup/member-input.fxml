@@ -15,21 +15,21 @@
          </font>
       </Text>
       <TextField fx:id="usernameTextField" layoutX="31.0" layoutY="54.0" prefHeight="30.0" prefWidth="351.0" />
-      <JFXCheckBox fx:id="assignCheckBox" disable="true" layoutX="61.0" layoutY="112.0" stylesheets="@../css/read-only-checkbbox.css" text="Allowed to give Assignment" textFill="#e7e7e7">
+      <JFXCheckBox fx:id="assignCheckBox" layoutX="61.0" layoutY="112.0" text="Allowed to give Assignment" textFill="#e7e7e7">
          <font>
             <Font name="Consolas" size="16.0" />
          </font>
       </JFXCheckBox>
-      <JFXCheckBox fx:id="inviteCheckBox" disable="true" layoutX="61.0" layoutY="154.0" stylesheets="@../css/read-only-checkbbox.css" text="Allowed to manage Team" textFill="#e7e7e7">
+      <JFXCheckBox fx:id="inviteCheckBox" layoutX="61.0" layoutY="154.0" text="Allowed to manage Team" textFill="#e7e7e7">
          <font>
             <Font name="Consolas" size="16.0" />
          </font>
       </JFXCheckBox>
-      <JFXButton fx:id="inviteButton" layoutX="79.0" layoutY="210.0" prefHeight="40.0" prefWidth="100.0" stylesheets="@../css/button.css" text="Invite" />
-      <JFXButton fx:id="cancelButton" layoutX="218.0" layoutY="210.0" prefHeight="40.0" prefWidth="100.0" stylesheets="@../css/cancel-button.css" text="Cancel" />
-      <Text fx:id="confirmText" fill="RED" layoutX="117.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="264.8000610351562">
+      <JFXButton fx:id="inviteButton" layoutX="79.0" layoutY="203.0" prefHeight="40.0" prefWidth="100.0" stylesheets="@../css/button.css" text="Invite" />
+      <JFXButton fx:id="cancelButton" layoutX="218.0" layoutY="203.0" prefHeight="40.0" prefWidth="100.0" stylesheets="@../css/cancel-button.css" text="Cancel" />
+      <Text fx:id="confirmText" fill="RED" layoutX="31.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="351.1999999999998">
          <font>
-            <Font name="Consolas" size="16.0" />
+            <Font name="Consolas" size="15.0" />
          </font>
       </Text>
    </children>

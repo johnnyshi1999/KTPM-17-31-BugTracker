@@ -22,8 +22,7 @@ import javafx.scene.media.MediaException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ProjectHomeController extends PaneController {
-    ProjectMainCotroller mediator;
+public class ProjectHomeController extends PaneController<ProjectMainCotroller> {
     @FXML
     TableView<IssueDTO> issueTableView;
     @FXML
@@ -112,5 +111,10 @@ public class ProjectHomeController extends PaneController {
 
     public ObservableList<IssueDTO> getIssues() {
         return issues;
+    }
+
+    @Override
+    public void checkAccess() {
+
     }
 }

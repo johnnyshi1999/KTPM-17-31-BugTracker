@@ -81,10 +81,6 @@ INSERT INTO `assignment` VALUES ('BU003', '10001', '10009', '2020-08-20 11:00:02
 INSERT INTO `assignment` VALUES ('BU004', '10003', '10002', '2020-08-20 14:01:02', 'issue 03');
 INSERT INTO `assignment` VALUES ('BU005', '10004', '10005', '2020-08-20 09:07:02', 'issue 05');
 INSERT INTO `assignment` VALUES ('BU006', '10004', '10010', '2020-08-20 11:15:02', 'issue 04');
-INSERT INTO `assignment` VALUES ('BU007', '10006', '10005', '2020-08-20 10:17:02', 'issue 06');
-INSERT INTO `assignment` VALUES ('BU008', '10007', '10009', '2020-08-20 08:11:02', 'issue 03');
-INSERT INTO `assignment` VALUES ('BU009', '10008', '10005', '2020-08-20 10:13:02', 'issue 02');
-INSERT INTO `assignment` VALUES ('BU010', '10008', '10002', '2020-08-20 06:15:02', 'issue 04');
 
 /*!40000 ALTER TABLE `assignment` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -119,16 +115,16 @@ CREATE TABLE `issue` (
 
 LOCK TABLES `issue` WRITE;
 /*!40000 ALTER TABLE `issue` DISABLE KEYS */;
-INSERT INTO `issue` VALUES ('BU001', '10001', 'project bug 1', 'bat loi project 01', '10005', '2020-08-20 10:18:02', '001', '1');
-INSERT INTO `issue` VALUES ('BU002', '10003', 'project app 1', 'loi thuc thi', '10008', '2020-08-20 06:15:02', '002', '0');
-INSERT INTO `issue` VALUES ('BU003', '10002', 'project web 1', 'loi tien trinh', '10005', '2020-08-20 08:11:02', '003', '0');
-INSERT INTO `issue` VALUES ('BU004', '10005', 'project bug 2', 'loi khoi tao moi', '10006', '2020-08-20 12:11:02', '004', '1');
-INSERT INTO `issue` VALUES ('BU005', '10005', 'project app 4', 'loi ky tu', '10007', '2020-08-20 08:11:02', '005', '1');
-INSERT INTO `issue` VALUES ('BU006', '10006', 'project web 5', 'loi cap nhat', '10001', '2020-08-20 08:11:02', '006', '0');
-INSERT INTO `issue` VALUES ('BU007', '10004', 'project bug 1', 'bat loi project 03', '10001', '2020-08-20 08:11:02', '007', '1');
-INSERT INTO `issue` VALUES ('BU008', '10007', 'project devsquad 6', 'bat loi project dev', '10004', '2020-08-20 08:11:02', '008', '1');
-INSERT INTO `issue` VALUES ('BU009', '10008', 'project app 3', 'loi truy xuat dong thoi', '10005', '2020-08-20 06:15:02', '009', '0');
-INSERT INTO `issue` VALUES ('BU010', '10000', 'project web 5', 'loi deadlock', '10003', '2020-08-20 08:11:02', '010', '1');
+INSERT INTO `issue` VALUES ('BU001', '1', 'project bug 1', 'bat loi project 01', '10005', '2020-08-20 10:18:02', '001', '1');
+INSERT INTO `issue` VALUES ('BU002', '3', 'project app 1', 'loi thuc thi', '10008', '2020-08-20 06:15:02', '002', '0');
+INSERT INTO `issue` VALUES ('BU003', '2', 'project web 1', 'loi tien trinh', '10005', '2020-08-20 08:11:02', '003', '0');
+INSERT INTO `issue` VALUES ('BU004', '5', 'project bug 2', 'loi khoi tao moi', '10006', '2020-08-20 12:11:02', '004', '1');
+INSERT INTO `issue` VALUES ('BU005', '5', 'project app 4', 'loi ky tu', '10007', '2020-08-20 08:11:02', '005', '1');
+INSERT INTO `issue` VALUES ('BU006', '6', 'project web 5', 'loi cap nhat', '10001', '2020-08-20 08:11:02', '006', '0');
+INSERT INTO `issue` VALUES ('BU007', '4', 'project bug 1', 'bat loi project 03', '10001', '2020-08-20 08:11:02', '007', '1');
+INSERT INTO `issue` VALUES ('BU008', '7', 'project devsquad 6', 'bat loi project dev', '10004', '2020-08-20 08:11:02', '008', '1');
+INSERT INTO `issue` VALUES ('BU009', '8', 'project app 3', 'loi truy xuat dong thoi', '10005', '2020-08-20 06:15:02', '009', '0');
+INSERT INTO `issue` VALUES ('BU010', '10', 'project web 5', 'loi deadlock', '10003', '2020-08-20 08:11:02', '010', '1');
 /*!40000 ALTER TABLE `issue` ENABLE KEYS */;
 UNLOCK TABLES;
 

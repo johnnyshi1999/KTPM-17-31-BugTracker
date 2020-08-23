@@ -1,6 +1,7 @@
 package DTO;
 
 import Business.Notifier;
+import Entities.Issue;
 import Entities.Project;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -25,7 +26,13 @@ public class ProjectDTO {
         title.set(project.getName());
         description.set(project.getDescription());
         dateCreated.set(dateFormat.format(project.getDateCreated()));
-        openIssues.set(project.getIssues().size());
+        int count = 0;
+        for (Issue issue : project.getIssues()) {
+            if (issue.getStatus() == 0) {
+                count++;
+            }
+        }
+        openIssues.set(count);
         members.set(project.getTeam().size());
 
 

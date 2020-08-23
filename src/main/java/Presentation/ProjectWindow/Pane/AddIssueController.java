@@ -25,8 +25,7 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class AddIssueController extends PaneController {
-    ProjectMainCotroller mediator;
+public class AddIssueController extends PaneController<ProjectMainCotroller> {
     IssueDTO dto = null;
     ObservableList<String> labels;
     ObservableList<String> members;
@@ -65,8 +64,19 @@ public class AddIssueController extends PaneController {
         super(mediator.getParentPane(), "/ProjectWindow/issue-input.fxml");
         this.mediator = mediator;
         labels = FXCollections.observableArrayList(mediator.manager.getProjectLabels());
-        labels.add("");
+        labels.add(0,"");
         members = FXCollections.observableArrayList(mediator.manager.getMemberNameList());
+    }
+
+    @Override
+    public void load() {
+        super.load();
+        assignToggleButton.setDisable(mediator.manager.getAssignRight() == false);
+    }
+
+    @Override
+    public void checkAccess() {
+        assignToggleButton.setDisable(mediator.manager.getAssignRight() == false);
     }
 
     @Override
