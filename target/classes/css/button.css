@@ -6,3 +6,12 @@
     -fx-font-family: Consolas;
     -fx-font-size: 16px;
 }
+
+.toggle-button {
+    -fx-background-color: #788fe2;
+    -fx-background-radius: 10;
+    -jfx-disable-visual-focus: false;
+    -fx-text-fill: #E7E7E7;
+    -fx-font-family: Consolas;
+    -fx-font-size: 16px;
+}

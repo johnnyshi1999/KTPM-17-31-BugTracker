@@ -40,9 +40,10 @@ public class HomeController extends PaneController<MainController> {
 
     ObservableList<ProjectDTO> projects;
 
-    public HomeController(Pane parent)
+    public HomeController(MainController controller)
     {
-        super(parent, "/MainWindow/home.fxml");
+        super(controller.getParentPane(), "/MainWindow/home.fxml");
+        mediator = controller;
     }
 
     @Override
@@ -97,11 +98,5 @@ public class HomeController extends PaneController<MainController> {
     }
     @Override
     public void checkAccess() {
-//        if (UserManager.getManager().getLoggedInUser() == null) {
-//            projects.clear();
-//        }
-//        else {
-//            projects = FXCollections.observableArrayList(UserManager.getManager().getUserProjects());
-//        }
     }
 }

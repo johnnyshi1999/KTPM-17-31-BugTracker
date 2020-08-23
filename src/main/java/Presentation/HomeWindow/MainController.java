@@ -5,6 +5,7 @@ import Business.Notifier;
 import Business.UserManager;
 import Entities.User;
 import Presentation.HomeWindow.Panes.HomeController;
+import Presentation.HomeWindow.Panes.ProfileController;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,6 +28,7 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
     HomeController homeController = null;
+    ProfileController profileController = null;
     Stage stage;
     @FXML
     AnchorPane PaneParent;
@@ -34,6 +36,8 @@ public class MainController implements Initializable {
     JFXButton loginButton;
     @FXML
     JFXButton homeButton;
+    @FXML
+    JFXButton profileButton;
 
     @FXML
     JFXButton registerButton;
@@ -68,6 +72,7 @@ public class MainController implements Initializable {
                 checkAccess();
             }
         });
+        homeButton.fire();
     }
 
     @Override
@@ -86,16 +91,30 @@ public class MainController implements Initializable {
                 showHomepane();
             }
         });
-        homeButton.fire();
+
+
+        profileButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                showProfilePane();
+            }
+        });
 
     }
 
     public void showHomepane() {
         if (homeController == null) {
-            homeController = new HomeController(PaneParent);
+            homeController = new HomeController(this);
         }
         homeController.load();
 
+    }
+
+    public void showProfilePane() {
+        if (profileController == null) {
+            profileController = new ProfileController(this);
+        }
+        profileController.load();
     }
 
     public void checkAccess() {

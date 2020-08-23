@@ -7,8 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="420.0" style="-fx-background-color: #26262B;" stylesheets="@css/textfileld.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="420.0" style="-fx-background-color: #26262B;" stylesheets="@css/textfileld.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text fill="#e7e7e7" layoutX="48.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
          <font>
@@ -34,13 +33,13 @@
          </font>
       </Text>
       <JFXTextField fx:id="emailTextField" layoutX="48.0" layoutY="258.0" prefHeight="30.0" prefWidth="304.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="48.0" />
-      <JFXButton fx:id="okButton" layoutX="48.0" layoutY="335.0" prefHeight="32.0" prefWidth="78.0" style="-fx-font-size: 15;" stylesheets="@css/button.css" text="Sign up" />
-      <JFXButton fx:id="backButton" layoutX="172.0" layoutY="333.0" prefHeight="32.0" prefWidth="200.0" style="-fx-font-size: 15;" stylesheets="@css/cancel-button.css" text="I already have acount">
+      <JFXButton fx:id="okButton" layoutX="48.0" layoutY="356.0" prefHeight="32.0" prefWidth="78.0" style="-fx-font-size: 15;" stylesheets="@css/button.css" text="Sign up" />
+      <JFXButton fx:id="backButton" layoutX="172.0" layoutY="354.0" prefHeight="32.0" prefWidth="200.0" style="-fx-font-size: 15;" stylesheets="@css/cancel-button.css" text="I already have acount">
          <font>
             <Font size="10.0" />
          </font>
       </JFXButton>
-      <Text fx:id="errorText" fill="RED" layoutX="58.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="304.0">
+      <Text fx:id="errorText" fill="RED" layoutX="36.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="348.7999897003174">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>

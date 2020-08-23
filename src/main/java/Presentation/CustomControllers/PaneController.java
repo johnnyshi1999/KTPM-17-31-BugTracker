@@ -19,6 +19,7 @@ public abstract class PaneController<T> implements Initializable {
         this.parent = parent;
         loader = new FXMLLoader(getClass().getResource(fxmlFile));
         loader.setController(this);
+        setUserAccessListener();
     }
 
     public void load() {
@@ -31,7 +32,6 @@ public abstract class PaneController<T> implements Initializable {
         }
         parent.getChildren().clear();
         parent.getChildren().add(container);
-        setUserAccessListener();
         checkAccess();
     }
 

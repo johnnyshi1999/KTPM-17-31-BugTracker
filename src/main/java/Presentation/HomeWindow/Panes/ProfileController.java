@@ -4,6 +4,7 @@ import Business.SharedPreference;
 import Business.UserManager;
 import DTO.UserDTO;
 import Presentation.CustomControllers.PaneController;
+import Presentation.HomeWindow.ChangePasswordController;
 import Presentation.HomeWindow.MainController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXToggleButton;
@@ -59,16 +60,26 @@ public class ProfileController extends PaneController<MainController> implements
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        changePasswordButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ChangePasswordController controller = new ChangePasswordController();
+                controller.load();
+            }
+        });
         changeEmailButton.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldvalue, Boolean newvalue) {
                 if (newvalue == true) {
                     oldEmail = new String(UserManager.getManager().getLoggedInUserInfo().getEmail());
                     editEmailHBox.setVisible(true);
+                    emailTextField.setEditable(true);
                     changeEmailButton.setVisible(false);
                 } else {
+                    emailTextField.setEditable(false);
                     changeEmailButton.setVisible(true);
                     editEmailHBox.setVisible(false);
+                    errorText.setText("");
                 }
             }
         });
@@ -82,7 +93,7 @@ public class ProfileController extends PaneController<MainController> implements
                     UserDTO dto = UserManager.getManager().getLoggedInUserInfo();
                     dto.setEmail(email);
                     UserManager.getManager().editUserInfo();
-                    changeEmailButton.setSelected(true);
+                    changeEmailButton.setSelected(false);
                 } catch (Exception e) {
                     errorText.setText(e.getMessage());
                 }
@@ -90,13 +101,16 @@ public class ProfileController extends PaneController<MainController> implements
             }
         });
 
+
         cancelEmailButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 emailTextField.setText(oldEmail);
-                changeEmailButton.setSelected(true);
+                changeEmailButton.setSelected(false);
             }
         });
+
+        showUserInfo();
     }
 
     private String getEmailInput() throws Exception {
@@ -110,6 +124,12 @@ public class ProfileController extends PaneController<MainController> implements
             throw new Exception("Invalid email, please re-enter");
         }
         return email;
+    }
+
+    private void showUserInfo() {
+        UserDTO dto = UserManager.getManager().getLoggedInUserInfo();
+        usernameText.setText(dto.getUsername());
+        emailTextField.setText(dto.getEmail());
     }
 
 }
