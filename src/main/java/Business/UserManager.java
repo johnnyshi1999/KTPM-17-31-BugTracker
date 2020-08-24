@@ -1,9 +1,10 @@
 package Business;
 
+import Business.Notifer.INotifyChange;
+import Business.Notifer.Notifier;
 import DAO.ProjectDAO;
 import DAO.ProjectTeamDAO;
 import DAO.UserDAO;
-import DTO.MemberDTO;
 import DTO.ProjectDTO;
 import DTO.UserDTO;
 import Entities.Project;
@@ -196,5 +197,17 @@ public class UserManager extends INotifyChange {
         loggedInUser.setEmail(dto.getEmail());
 
         new UserDAO().update(loggedInUser);
+    }
+
+    public void editProject(ProjectDTO dto) {
+        for (ProjectTeam projectTeam : loggedInUser.getProjects()) {
+            Project project = projectTeam.getProject();
+            if (project.getId() == dto.getId()) {
+                project.setName(dto.getTitle());
+                project.setDescription(dto.getDescription());
+
+                new ProjectDAO().update(project);
+            }
+        }
     }
 }

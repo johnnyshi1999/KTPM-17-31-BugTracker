@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="600.0" style="-fx-background-color: #26262B;" stylesheets="@../css/textfileld.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fill="#e7e7e7" layoutX="31.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title">
+         <font>
+            <Font name="Consolas Bold" size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="titleTextField" editable="false" layoutX="31.0" layoutY="66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="538.0" promptText="Enter project title here...." style="-fx-background-color: #555A61; -fx-text-fill: #E7E7E7;" stylesheets="@../css/readonly-style.css">
+         <font>
+            <Font name="Consolas" size="16.0" />
+         </font>
+      </TextField>
+      <Text fill="#e7e7e7" layoutX="31.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+         <font>
+            <Font name="Consolas Bold" size="16.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="descriptionTextArea" editable="false" layoutX="31.0" layoutY="154.0" prefHeight="282.0" prefWidth="538.0" stylesheets="@../css/readonly-style.css">
+         <font>
+            <Font name="Consolas" size="16.0" />
+         </font>
+      </TextArea>
+      <Text fx:id="errorText" fill="#dd2121" layoutX="264.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="64.800048828125">
+         <font>
+            <Font name="Consolas Bold" size="15.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

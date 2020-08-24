@@ -1,16 +1,13 @@
 package DAO;
 
-import Business.Notifier;
 import Entities.Project;
 import Entities.User;
 import hibernate.HibernateUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectDAO implements DAOInterface<Project> {

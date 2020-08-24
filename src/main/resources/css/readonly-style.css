@@ -1,3 +1,19 @@
 .check-box:disabled , .check-box:disabled > * {
     -fx-opacity: 1.0 ;
 }
+
+.text-field:disabled {
+    -fx-opacity: 1.0 ;
+}
+
+.text-area:disabled {
+    -fx-opacity: 1.0 ;
+}
+
+.text-field:readonly {
+    -fx-opacity: 1.0 ;
+}
+
+.text-area:readonly {
+    -fx-opacity: 1.0 ;
+}

@@ -4,7 +4,7 @@ import Business.UserManager;
 import DTO.ProjectDTO;
 import Presentation.CustomControllers.PaneController;
 import Presentation.HomeWindow.MainController;
-import Presentation.ProjectInfoController;
+import Presentation.CreateProjectController;
 import Presentation.ProjectWindow.ProjectMainCotroller;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -16,9 +16,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -98,7 +95,7 @@ public class HomeController extends PaneController<MainController> {
         newProjectButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                ProjectInfoController controller = new ProjectInfoController();
+                CreateProjectController controller = new CreateProjectController();
                 controller.load();
                 if (controller.getDTO() != null) {
                     projects.add(controller.getDTO());

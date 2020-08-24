@@ -1,9 +1,8 @@
 package Presentation.HomeWindow;
 
-import Business.INotifyChange;
-import Business.Notifier;
+import Business.Notifer.INotifyChange;
+import Business.Notifer.Notifier;
 import Business.UserManager;
-import Entities.User;
 import Presentation.HomeWindow.Panes.HomeController;
 import Presentation.HomeWindow.Panes.ProfileController;
 import com.jfoenix.controls.JFXButton;
@@ -18,7 +17,6 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;

@@ -1,7 +1,7 @@
 package Presentation.ProjectWindow;
 
-import Business.INotifyChange;
-import Business.Notifier;
+import Business.Notifer.INotifyChange;
+import Business.Notifer.Notifier;
 import Business.ProjectManager;
 import Business.UserManager;
 import DTO.ProjectDTO;
@@ -17,12 +17,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -46,6 +48,10 @@ public class ProjectMainCotroller implements Initializable {
     Text titleText;
     @FXML
     VBox sidePaneVBox;
+    @FXML
+    Button infoButton;
+    @FXML
+    Button editInfoButton;
     public ProjectMainCotroller(ProjectDTO dto) {
         manager = new ProjectManager(dto);
     }
@@ -101,6 +107,22 @@ public class ProjectMainCotroller implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 showTeamPane();
+            }
+        });
+
+        infoButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ProjectInfoController controller = new ProjectInfoController(manager.getDto());
+                controller.load();
+            }
+        });
+
+        editInfoButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                EditProjectController controller = new EditProjectController(manager.getDto());
+                controller.load();
             }
         });
     }

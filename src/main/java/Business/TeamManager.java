@@ -1,6 +1,7 @@
 package Business;
 
-import DAO.ProjectDAO;
+import Business.Notifer.INotifyChange;
+import Business.Notifer.Notifier;
 import DAO.ProjectTeamDAO;
 import DTO.MemberDTO;
 import Entities.Project;
@@ -8,9 +9,6 @@ import Entities.ProjectTeam;
 import Entities.User;
 
 import java.util.Date;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class TeamManager {
     private Project project;

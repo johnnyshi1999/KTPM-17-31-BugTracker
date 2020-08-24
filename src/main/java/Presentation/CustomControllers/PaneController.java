@@ -1,8 +1,7 @@
 package Presentation.CustomControllers;
 
-import Business.INotifyChange;
-import Business.Notifier;
-import Business.UserManager;
+import Business.Notifer.INotifyChange;
+import Business.Notifer.Notifier;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;

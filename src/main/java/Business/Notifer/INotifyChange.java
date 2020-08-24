@@ -1,6 +1,4 @@
-package Business;
-
-import Business.Notifier;
+package Business.Notifer;
 
 import java.util.ArrayList;
 import java.util.List;

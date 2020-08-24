@@ -1,18 +1,11 @@
 package Entities;
 
-import Business.INotifyChange;
-import javafx.beans.property.IntegerProperty;
+import Business.Notifer.INotifyChange;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class User extends INotifyChange implements Serializable {

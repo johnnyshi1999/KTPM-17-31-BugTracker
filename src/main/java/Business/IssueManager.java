@@ -1,5 +1,7 @@
 package Business;
 
+import Business.Notifer.INotifyChange;
+import Business.Notifer.Notifier;
 import DTO.IssueDTO;
 import Entities.Issue;
 

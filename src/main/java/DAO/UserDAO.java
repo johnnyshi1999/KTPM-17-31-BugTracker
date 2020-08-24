@@ -1,6 +1,6 @@
 package DAO;
 
-import Business.INotifyChange;
+import Business.Notifer.INotifyChange;
 import Entities.User;
 import hibernate.HibernateUtils;
 import org.hibernate.Session;

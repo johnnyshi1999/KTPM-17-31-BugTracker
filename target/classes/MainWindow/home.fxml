@@ -24,7 +24,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="newProjectButton" layoutX="614.0" layoutY="65.0" mnemonicParsing="false" style="-fx-background-color: null;" text="New Project" textFill="#e7e7e7">
+      <Button fx:id="newProjectButton" layoutX="614.0" layoutY="55.0" mnemonicParsing="false" style="-fx-background-color: null;" text="New Project" textFill="#e7e7e7">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -36,7 +36,7 @@
             <Font name="Consolas" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="deleteButton" layoutX="800.0" layoutY="66.0" mnemonicParsing="false" style="-fx-background-color: null;" text="Remove Selected" textFill="#e7e7e7">
+      <Button fx:id="deleteButton" layoutX="800.0" layoutY="56.0" mnemonicParsing="false" style="-fx-background-color: null;" text="Remove Selected" textFill="#e7e7e7">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -53,7 +53,7 @@
             <Font name="Consolas" size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="keywordTextField" layoutX="151.0" layoutY="57.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="365.0" promptText="enter key words here" style="-fx-background-color: #555A61; -fx-text-fill: #E7E7E7;">
+      <TextField fx:id="keywordTextField" layoutX="151.0" layoutY="57.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="420.0" promptText="enter key words here" style="-fx-background-color: #555A61; -fx-text-fill: #E7E7E7;">
          <font>
             <Font name="Consolas" size="18.0" />
          </font>

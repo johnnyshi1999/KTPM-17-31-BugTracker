@@ -1,6 +1,6 @@
 package Entities;
 
-import Business.INotifyChange;
+import Business.Notifer.INotifyChange;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 

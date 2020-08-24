@@ -1,5 +1,7 @@
 package Business;
 
+import Business.Notifer.INotifyChange;
+import Business.Notifer.Notifier;
 import DAO.AssignmentDAO;
 import DAO.IssueDAO;
 import DAO.LabelDAO;
@@ -7,7 +9,6 @@ import DTO.IssueDTO;
 import DTO.MemberDTO;
 import DTO.ProjectDTO;
 import Entities.*;
-import javafx.beans.property.BooleanProperty;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -77,7 +78,7 @@ public class ProjectManager {
         return dto;
     }
 
-    private Label getLabel(String labelName) {
+    public Label getLabel(String labelName) {
 
         for (Label label : currentProject.getLabels()) {
             if (label.getLabelName().equals(labelName)) {
@@ -238,6 +239,8 @@ public class ProjectManager {
     public void removeMember(MemberDTO dto) {
         teamManager.removeMember(dto);
     }
+
+
 
 
 }

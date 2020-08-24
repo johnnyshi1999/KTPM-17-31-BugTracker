@@ -1,6 +1,6 @@
 package Entities;
 
-import Business.INotifyChange;
+import Business.Notifer.INotifyChange;
 import javafx.beans.property.*;
 
 import java.io.Serializable;

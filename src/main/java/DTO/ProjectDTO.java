@@ -1,6 +1,5 @@
 package DTO;
 
-import Business.Notifier;
 import Entities.Issue;
 import Entities.Project;
 import javafx.beans.property.IntegerProperty;
@@ -9,7 +8,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class ProjectDTO {
     private int id;

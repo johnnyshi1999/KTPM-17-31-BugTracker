@@ -9,6 +9,7 @@ import Entities.Issue;
 import Presentation.CustomControllers.PaneController;
 import Presentation.ProjectWindow.EditIssueController;
 import Presentation.ProjectWindow.IssueInfoController;
+import Presentation.ProjectWindow.ProjectInfoController;
 import Presentation.ProjectWindow.ProjectMainCotroller;
 import com.jfoenix.controls.JFXCheckBox;
 import javafx.beans.value.ChangeListener;
@@ -145,6 +146,7 @@ public class ProjectHomeController extends PaneController<ProjectMainCotroller> 
                 }
             }
         });
+
 
     }
 
