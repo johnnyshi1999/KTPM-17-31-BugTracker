@@ -20,7 +20,7 @@ public class UserManager extends INotifyChange {
     private static UserManager manager = null;
     private User loggedInUser = null;
     private UserDTO dto = null;
-    private static List<ProjectTeam> projects = null;
+//    private static List<ProjectTeam> projects = null;
 
     public static void bindDtoToObject(User user, UserDTO dto) {
         Notifier notifier = new Notifier() {
@@ -112,16 +112,15 @@ public class UserManager extends INotifyChange {
         loggedInUser.getProjects().add(projectTeam);
 
         new ProjectTeamDAO().save(projectTeam);
+        dto.copyInfo(project);
         ProjectManager.bindDtoToObject(project, dto);
     }
 
     public List<ProjectDTO> getUserProjects() {
         List<ProjectDTO> result = new ArrayList<>();
-        if (projects == null) {
-            projects = new ArrayList<ProjectTeam>(loggedInUser.getProjects());
-        }
-        for (int i = 0; i < projects.size(); i++) {
-            Project project = projects.get(i).getProject();
+
+        for (ProjectTeam projectTeam : loggedInUser.getProjects()) {
+            Project project = projectTeam.getProject();
             ProjectDTO dto = new ProjectDTO();
             dto.copyInfo(project);
             ProjectManager.bindDtoToObject(project, dto);
@@ -140,28 +139,26 @@ public class UserManager extends INotifyChange {
         return result;
     }
 
-    public static Project getProjectFromDTO(ProjectDTO dto) {
+    public Project getProjectFromDTO(ProjectDTO dto) {
         Project project = null;
-        if (projects != null) {
-            for (int i = 0; i < projects.size(); i++) {
-                if (projects.get(i).getProject().getId() == dto.getId()) {
-                    project = projects.get(i).getProject();
-                    return project;
-                }
+
+        for (ProjectTeam projectTeam : loggedInUser.getProjects()) {
+            if (projectTeam.getProject().getId() == dto.getId()) {
+                project = projectTeam.getProject();
+                return project;
             }
         }
+
         return project;
     }
 
     public boolean getAssignRightOnProject(Project project) {
-        if (projects != null) {
-            for (int i = 0; i < projects.size(); i++) {
-                if (projects.get(i).getProject().getId() == project.getId()
-                    && projects.get(i).getUser().getId() == loggedInUser.getId()) {
-                    return projects.get(i).isAssignRight();
-                }
+        for (ProjectTeam projectTeam : loggedInUser.getProjects()) {
+            if (projectTeam.getProject().getId() == project.getId()) {
+                return projectTeam.isAssignRight();
             }
         }
+
         return false;
     }
 
@@ -207,6 +204,19 @@ public class UserManager extends INotifyChange {
                 project.setDescription(dto.getDescription());
 
                 new ProjectDAO().update(project);
+            }
+        }
+    }
+
+    public void deleteProject(ProjectDTO dto) {
+        for (ProjectTeam projectTeam : loggedInUser.getProjects()) {
+            Project project = projectTeam.getProject();
+            if (project.getId() == dto.getId()) {
+                new ProjectTeamDAO().delete(projectTeam);
+            }
+
+            if (project.getManager().getId() == loggedInUser.getId()) {
+                new ProjectDAO().delete(project);
             }
         }
     }

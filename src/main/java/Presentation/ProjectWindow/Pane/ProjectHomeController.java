@@ -29,6 +29,7 @@ import javafx.scene.media.MediaException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ProjectHomeController extends PaneController<ProjectMainCotroller> {
@@ -114,8 +115,21 @@ public class ProjectHomeController extends PaneController<ProjectMainCotroller> 
             public void handle(ActionEvent event) {
                 IssueDTO issueDTO = issueTableView.getSelectionModel().getSelectedItem();
                 if (issueDTO != null) {
-                    manager.deleteIssue(issueDTO);
-                    issues.remove(issueDTO);
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setHeaderText("Delete Issue Confirmation");
+                    alert.setContentText("Are you sure to delete this issue:\n" + issueDTO.getTitle());
+                    DialogPane pane = alert.getDialogPane();
+                    pane.getStylesheets().add(
+                            getClass().getResource("/css/dialog.css").toExternalForm());
+
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.get() == ButtonType.OK){
+                        keywordTextField.clear();
+                        manager.deleteIssue(issueDTO);
+                        issues.remove(issueDTO);
+                    }
+
+
                 }
                 else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);

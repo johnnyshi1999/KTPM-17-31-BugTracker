@@ -69,6 +69,17 @@ public class ProjectDAO implements DAOInterface<Project> {
 
     @Override
     public void delete(Project project) {
+        Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+        try {
+            session.getTransaction().begin();
+            session.delete(project);
+            session.flush();
+            session.getTransaction().commit();
+            project.fireNotifiers();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
 
     }
 }

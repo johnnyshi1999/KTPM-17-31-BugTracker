@@ -1,6 +1,7 @@
 package Presentation.HomeWindow.Panes;
 
 import Business.UserManager;
+import DTO.MemberDTO;
 import DTO.ProjectDTO;
 import Presentation.CustomControllers.PaneController;
 import Presentation.HomeWindow.MainController;
@@ -20,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class HomeController extends PaneController<MainController> {
@@ -39,6 +41,8 @@ public class HomeController extends PaneController<MainController> {
     TableColumn<ProjectDTO, String> dateCreatedColumn;
     @FXML
     Button newProjectButton;
+    @FXML
+    Button deleteButton;
     @FXML
     TextField keywordTextField;
 
@@ -92,6 +96,40 @@ public class HomeController extends PaneController<MainController> {
             return row ;
         });
 
+        projectTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ProjectDTO>() {
+            @Override
+            public void changed(ObservableValue<? extends ProjectDTO> observableValue, ProjectDTO dto, ProjectDTO t1) {
+                if (t1 == null) {
+                    deleteButton.setDisable(true);
+                }
+                else {
+                    deleteButton.setDisable(false);
+                }
+            }
+        });
+        deleteButton.setDisable(false);
+        deleteButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ProjectDTO selected = projectTableView.getSelectionModel().getSelectedItem();
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setHeaderText("Delete Project Confirmation");
+                alert.setContentText("Are you sure to delete:\n" + selected.getTitle());
+                DialogPane pane = alert.getDialogPane();
+                pane.getStylesheets().add(
+                        getClass().getResource("/css/dialog.css").toExternalForm());
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
+                    keywordTextField.clear();
+                    UserManager.getManager().deleteProject(selected);
+                    projects.remove(selected);
+                }
+
+
+            }
+        });
+
         newProjectButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -127,10 +165,10 @@ public class HomeController extends PaneController<MainController> {
                 continue;
             }
 
-            if (projects.get(i).getDescription().contains(keyword)) {
-                result.add(projects.get(i));
-                continue;
-            }
+//            if (projects.get(i).getDescription().contains(keyword)) {
+//                result.add(projects.get(i));
+//                continue;
+//            }
 
             if (projects.get(i).getCreator().contains(keyword)) {
                 result.add(projects.get(i));

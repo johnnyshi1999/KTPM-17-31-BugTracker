@@ -11,11 +11,9 @@ import Entities.User;
 import java.util.Date;
 
 public class TeamManager {
-    private Project project;
     ProjectManager projectManager;
 
     public TeamManager(ProjectManager manager) {
-        project = manager.getCurrentProject();
         projectManager = manager;
     }
     public static void bindDtoToObject(ProjectTeam projectTeam, MemberDTO dto) {
@@ -35,27 +33,30 @@ public class TeamManager {
             throw new Exception("Username does not exists");
         }
 
-        for (ProjectTeam pt : project.getTeam()) {
+        for (ProjectTeam pt : projectManager.getCurrentProject().getTeam()) {
             if (pt.getUser().getId() == user.getId()) {
                 throw new Exception("User has already joined");
             }
         }
 
         ProjectTeam projectTeam = new ProjectTeam();
-        projectTeam.setProject(project);
+        projectTeam.setProject(projectManager.getCurrentProject());
         projectTeam.setUser(user);
         projectTeam.setDateJoined(new Date());
         projectTeam.setAssignRight(dto.isAssignRight());
         projectTeam.setInviteRight(dto.isInviteRight());
 
-        project.getTeam().add(projectTeam);
+        projectManager.getCurrentProject().getTeam().add(projectTeam);
         new ProjectTeamDAO().save(projectTeam);
+
+        dto.copyInfo(projectTeam);
+        bindDtoToObject(projectTeam, dto);
     }
 
     public void editMemberRight(MemberDTO dto) {
 
         ProjectTeam projectTeam = null;
-        for (ProjectTeam pt : project.getTeam()) {
+        for (ProjectTeam pt : projectManager.getCurrentProject().getTeam()) {
             if (pt.getUser().getUsername().equals(dto.getUsername())) {
                 pt.setAssignRight(dto.isAssignRight());
                 pt.setInviteRight(dto.isInviteRight());
@@ -69,14 +70,14 @@ public class TeamManager {
     public void removeMember(MemberDTO dto) {
 
         ProjectTeam projectTeam = null;
-        for (ProjectTeam pt : project.getTeam()) {
+        for (ProjectTeam pt : projectManager.getCurrentProject().getTeam()) {
             if (pt.getUser().getUsername().equals(dto.getUsername())) {
                 projectTeam = pt;
                 break;
             }
         }
 
-        project.getTeam().remove(projectTeam);
+        projectManager.getCurrentProject().getTeam().remove(projectTeam);
         new ProjectTeamDAO().delete(projectTeam);
     }
 

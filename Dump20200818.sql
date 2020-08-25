@@ -45,7 +45,7 @@ CREATE TABLE `assignment` (
 
 LOCK TABLES `assignment` WRITE;
 /*!40000 ALTER TABLE `assignment` DISABLE KEYS */;
-INSERT INTO `assignment` VALUES ('BU001',10000,10005,'2020-08-20 10:18:02','issue 01'),('BU002',10001,10010,'2020-08-20 17:11:02','issue 01'),('BU003',10001,10009,'2020-08-20 11:00:02','issue 02'),('BU004',10003,10002,'2020-08-20 14:01:02','issue 03'),('BU005',10004,10005,'2020-08-20 09:07:02','issue 05'),('BU006',10004,10010,'2020-08-20 11:15:02','issue 04'),('BU009',10005,10000,'2020-08-31 18:07:00','quick fix');
+INSERT INTO `assignment` VALUES ('6a264f33-00d5-4f2f-96ea-d79343234a7c',10005,10007,'2020-08-31 12:43:00',''),('9d8d63da-99ea-4848-8d34-641c7f1e2d80',10000,10000,'2020-08-31 21:30:00','qucik fix'),('BU001',10000,10005,'2020-08-20 10:18:02','issue 01'),('BU002',10001,10010,'2020-08-20 17:11:02','issue 01'),('BU003',10001,10009,'2020-08-20 11:00:02','issue 02'),('BU004',10003,10002,'2020-08-20 14:01:02','issue 03'),('BU005',10004,10005,'2020-08-20 09:07:02','issue 05'),('BU006',10004,10010,'2020-08-20 11:15:02','issue 04'),('BU009',10005,10000,'2020-08-31 18:07:00','quick fix'),('f7bbe939-c90b-4eef-a1f7-e31e1081d998',10007,10000,'2020-08-31 07:30:00','update id');
 /*!40000 ALTER TABLE `assignment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,7 +79,7 @@ CREATE TABLE `issue` (
 
 LOCK TABLES `issue` WRITE;
 /*!40000 ALTER TABLE `issue` DISABLE KEYS */;
-INSERT INTO `issue` VALUES ('BU001',1,'project bug 1','bat loi project 01',10005,'2020-08-20 10:18:02',1,1),('BU002',3,'project app 1','loi thuc thi',10008,'2020-08-20 06:15:02',2,0),('BU003',2,'project web 1','loi tien trinh',10005,'2020-08-20 08:11:02',3,0),('BU004',5,'project bug 2','loi khoi tao moi',10006,'2020-08-20 12:11:02',4,1),('BU005',5,'project app 4','loi ky tu',10007,'2020-08-20 08:11:02',5,1),('BU006',6,'project web 5','loi cap nhat',10001,'2020-08-20 08:11:02',6,0),('BU007',4,'project bug 1','bat loi project 03',10001,'2020-08-20 08:11:02',7,1),('BU008',7,'project devsquad 6','bat loi project dev',10004,'2020-08-20 08:11:02',8,1),('BU009',8,'project app 3','loi truy xuat dong thoi',10000,'2020-08-22 20:07:37',NULL,1),('BU010',10,'project web 5','loi deadlock',10003,'2020-08-20 08:11:02',10,1),('f8c7db62-959c-4912-8a0e-cf95a88afca0',8,'test issue','problem in testing',10000,'2020-08-23 23:26:18',11,0);
+INSERT INTO `issue` VALUES ('6a264f33-00d5-4f2f-96ea-d79343234a7c',22,'problem with db','',10007,'2020-08-25 12:43:58',19,1),('9d8d63da-99ea-4848-8d34-641c7f1e2d80',22,'UI not respone','UI freezes and crash',10000,'2020-08-25 12:14:07',18,1),('BU001',1,'project bug 1','bat loi project 01',10005,'2020-08-20 10:18:02',1,1),('BU002',3,'project app 1','loi thuc thi',10008,'2020-08-20 06:15:02',2,0),('BU003',2,'project web 1','loi tien trinh',10005,'2020-08-20 08:11:02',3,0),('BU004',5,'project bug 2','loi khoi tao moi',10006,'2020-08-20 12:11:02',4,1),('BU005',5,'project app 4','loi ky tu',10007,'2020-08-20 08:11:02',5,1),('BU006',6,'project web 5','loi cap nhat',10001,'2020-08-20 08:11:02',6,0),('BU007',4,'project bug 1','bat loi project 03',10001,'2020-08-20 08:11:02',7,1),('BU008',7,'project devsquad 6','bat loi project dev',10004,'2020-08-20 08:11:02',8,1),('BU009',8,'project app 3','loi truy xuat dong thoi',10000,'2020-08-22 20:07:37',NULL,1),('BU010',10,'project web 5','loi deadlock',10003,'2020-08-20 08:11:02',10,1),('f7bbe939-c90b-4eef-a1f7-e31e1081d998',8,'Database issue','problem with id',10000,'2020-08-25 10:38:41',NULL,1);
 /*!40000 ALTER TABLE `issue` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,7 +97,7 @@ CREATE TABLE `label` (
   PRIMARY KEY (`id`),
   KEY `FK_LABEL_PROJECT_idx` (`project_id`),
   CONSTRAINT `FK_LABEL_PROJECT` FOREIGN KEY (`project_id`) REFERENCES `project` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +106,7 @@ CREATE TABLE `label` (
 
 LOCK TABLES `label` WRITE;
 /*!40000 ALTER TABLE `label` DISABLE KEYS */;
-INSERT INTO `label` VALUES (1,1,'label 01'),(2,2,'label 02'),(3,3,'label 03'),(4,4,'label 04'),(5,5,'label 05'),(6,6,'label 06'),(7,7,'label 07'),(8,8,'label 08'),(9,9,'label 09'),(10,10,'label 10'),(11,8,'Interface');
+INSERT INTO `label` VALUES (1,1,'label 01'),(2,2,'label 02'),(3,3,'label 03'),(4,4,'label 04'),(5,5,'label 05'),(6,6,'label 06'),(7,7,'label 07'),(8,8,'label 08'),(9,9,'label 09'),(10,10,'label 10'),(11,8,'Interface'),(12,13,'Interface'),(13,8,'Database'),(18,22,'Interface'),(19,22,'Database');
 /*!40000 ALTER TABLE `label` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,7 +127,7 @@ CREATE TABLE `project` (
   PRIMARY KEY (`id`),
   KEY `FK_PROJECT_USER_idx` (`manager`),
   CONSTRAINT `FK_PROJECT_USER` FOREIGN KEY (`manager`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,7 +136,7 @@ CREATE TABLE `project` (
 
 LOCK TABLES `project` WRITE;
 /*!40000 ALTER TABLE `project` DISABLE KEYS */;
-INSERT INTO `project` VALUES (1,'project 01','project loi truy xuat dong thoi',10002,0,'2020-08-20 10:18:02'),(2,'project 02','project loi deadlock',10004,1,'2020-08-20 08:11:02'),(3,'project 03','project truy xuat',10003,1,'2020-08-20 10:18:02'),(4,'project 04','project loi truy xuat dong thoi',10002,0,'2020-08-20 10:18:02'),(5,'project 05','project debug qua han',10005,0,'2020-08-20 10:18:02'),(6,'project 06','project loi cap nhat',10004,0,'2020-08-20 08:11:02'),(7,'project 07','project loi dang ky google',10001,1,'2020-08-20 08:11:02'),(8,'Project Avenger','To gather the greatest \"Helo world\" programs the world has ever seen',10000,0,'2020-08-20 10:18:02'),(9,'project 09','project loi danh gia',10002,1,'2020-08-20 10:18:02'),(10,'project 10','project loi truy xuat dong thoi',10009,0,'2020-08-20 08:11:02'),(13,'test project','',10000,0,'2020-08-23 20:39:12');
+INSERT INTO `project` VALUES (1,'project 01','project loi truy xuat dong thoi',10002,0,'2020-08-20 10:18:02'),(2,'project 02','project loi deadlock',10004,1,'2020-08-20 08:11:02'),(3,'project 03','project truy xuat',10003,1,'2020-08-20 10:18:02'),(4,'project 04','project loi truy xuat dong thoi',10002,0,'2020-08-20 10:18:02'),(5,'project 05','project debug qua han',10005,0,'2020-08-20 10:18:02'),(6,'project 06','project loi cap nhat',10004,0,'2020-08-20 08:11:02'),(7,'project 07','project loi dang ky google',10001,1,'2020-08-20 08:11:02'),(8,'Project Avenger','To gather the greatest \"Hello world\" programs the world \nhas ever seen, to fight for humanity\'s survival',10000,0,'2020-08-20 10:18:02'),(9,'project 09','project loi danh gia',10002,1,'2020-08-20 10:18:02'),(10,'project 10','project loi truy xuat dong thoi',10009,0,'2020-08-20 08:11:02'),(13,'test project','Testing purposes',10000,0,'2020-08-23 20:39:12'),(22,'Project Skynet v2','to create the best AI program',10000,0,'2020-08-25 12:08:40');
 /*!40000 ALTER TABLE `project` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +166,7 @@ CREATE TABLE `project_team` (
 
 LOCK TABLES `project_team` WRITE;
 /*!40000 ALTER TABLE `project_team` DISABLE KEYS */;
-INSERT INTO `project_team` VALUES (1,10001,1,0,'2020-08-20 08:11:02'),(2,10002,0,1,'2020-08-19 10:01:03'),(3,10004,0,1,'2020-07-21 09:17:01'),(4,10003,1,1,'2020-06-19 18:18:04'),(5,10005,1,0,'2020-11-20 12:15:02'),(6,10001,0,0,'2020-08-20 08:11:02'),(7,10006,0,0,'2020-08-19 10:01:03'),(8,10000,1,1,'2020-07-27 07:30:00'),(8,10005,1,0,'2020-08-22 13:37:39'),(8,10007,0,0,'2020-06-19 18:18:04'),(9,10004,1,0,'2020-07-21 09:17:01'),(10,10005,1,1,'2020-11-20 12:15:02'),(13,10000,1,1,'2020-08-23 20:39:12');
+INSERT INTO `project_team` VALUES (1,10001,1,0,'2020-08-20 08:11:02'),(2,10002,0,1,'2020-08-19 10:01:03'),(3,10004,0,1,'2020-07-21 09:17:01'),(4,10003,1,1,'2020-06-19 18:18:04'),(5,10005,1,0,'2020-11-20 12:15:02'),(6,10001,0,0,'2020-08-20 08:11:02'),(7,10006,0,0,'2020-08-19 10:01:03'),(8,10000,1,1,'2020-07-27 07:30:00'),(8,10005,0,1,'2020-08-22 13:37:39'),(8,10007,1,0,'2020-06-19 18:18:04'),(9,10004,1,0,'2020-07-21 09:17:01'),(10,10005,1,1,'2020-11-20 12:15:02'),(13,10000,1,1,'2020-08-23 20:39:12'),(13,10007,1,1,'2020-08-25 10:24:31'),(22,10000,1,1,'2020-08-25 12:08:40'),(22,10005,0,1,'2020-08-25 12:15:45'),(22,10007,1,0,'2020-08-25 12:15:36');
 /*!40000 ALTER TABLE `project_team` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +185,7 @@ CREATE TABLE `user` (
   `user_type` int unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=10012 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10014 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,7 +194,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (10000,'user1','manager','johnny@gmail.com',0),(10001,'phamgiavu','user','phamgiavu@gmail.com',1),(10002,'lytieulong','user','lytieulong@gmail.com',1),(10003,'nguyenthilan','user','nguyenthilan@gmail.com',1),(10004,'shmily','user','shmily@gmail.com',0),(10005,'jenny','user','jenny@gmail.com',0),(10006,'Kitthy','user','Kitthy@gmail.com',1),(10007,'tommy','user','tommy@gmail.com',1),(10008,'buttdy','user','buttdy@gmail.com',0),(10009,'peter','user','peter@gmail.com',1),(10010,'oggy','user','oggy@gmail.com',0),(10011,'johnny','123456','johnnyshi@gmail.com',0);
+INSERT INTO `user` VALUES (10000,'user1','123456','admin2707@gmail.com',0),(10001,'phamgiavu','user','phamgiavu@gmail.com',1),(10002,'lytieulong','user','lytieulong@gmail.com',1),(10003,'nguyenthilan','user','nguyenthilan@gmail.com',1),(10004,'shmily','user','shmily@gmail.com',0),(10005,'jenny','user','jenny@gmail.com',0),(10006,'Kitthy','user','Kitthy@gmail.com',1),(10007,'tommy','user','tommy@gmail.com',1),(10008,'buttdy','user','buttdy@gmail.com',0),(10009,'peter','user','peter@gmail.com',1),(10010,'oggy','user','oggy@gmail.com',0),(10011,'johnny','123456','johnnyshi@gmail.com',0),(10012,'hung2707','123456','hung2707@gmail.com',0),(10013,'hung27071999','123456','hung2707@gmail.com',0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -232,4 +232,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-25  9:48:45
+-- Dump completed on 2020-08-25 22:11:15

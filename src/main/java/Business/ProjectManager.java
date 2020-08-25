@@ -48,7 +48,7 @@ public class ProjectManager {
 
     public void setCurrentProject(ProjectDTO dto) {
         this.dto = dto;
-        currentProject = UserManager.getProjectFromDTO(dto);
+        currentProject = UserManager.getManager().getProjectFromDTO(dto);
     }
 
     public List<IssueDTO> getProjectIssues() {
@@ -150,6 +150,7 @@ public class ProjectManager {
         Label label = new Label();
         label.setLabelName(labelStr);
         label.setProject(currentProject);
+        currentProject.getLabels().add(label);
         new LabelDAO().save(label);
     }
 

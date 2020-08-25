@@ -237,8 +237,10 @@ public class MemberController extends PaneController<ProjectMainCotroller> {
             usernameText.setText(selected.getUsername());
             emailText.setText(selected.getEmail());
             dateJoinedText.setText(selected.getDateJoined());
-            assignCheckBox.setSelected(selected.isAssignRight());
-            inviteCheckBox.setSelected(selected.isInviteRight());
+            assignCheckBox.selectedProperty().bind(selected.assignRightProperty());
+            inviteCheckBox.selectedProperty().bind(selected.inviteRightProperty());
+//            assignCheckBox.setSelected(selected.isAssignRight());
+//            inviteCheckBox.setSelected(selected.isInviteRight());
         }
         else {
             usernameText.setText("");

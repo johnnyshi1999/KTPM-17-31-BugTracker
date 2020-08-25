@@ -16,6 +16,7 @@ public class IssueDAO implements DAOInterface<Issue>{
 
             issue.fireNotifiers();
             issue.getProject().fireNotifiers();
+            issue.getProject().fireNotifiers();
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
